@@ -1,0 +1,262 @@
+.denied-page {
+  position: relative;
+
+  width: 402px;
+  height: 874px;
+
+  margin: 0 auto;
+
+  background: #FFF;
+
+  font-family: Pretendard, sans-serif;
+  box-sizing: border-box;
+}
+
+.denied-page *,
+.denied-page *::before,
+.denied-page *::after {
+  box-sizing: border-box;
+}
+
+
+/* 뒤로가기 */
+
+.denied-back {
+  position: absolute;
+
+  left: 0.5px;
+  top: 53px;
+
+  width: 35px;
+  height: 32px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+
+/* 상단 - 위치 권한 거부 안내 */
+
+.denied-header {
+  position: absolute;
+
+  left: 130.5px;
+  top: 57px;
+
+  color: #624001;
+
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  letter-spacing: -1.2px;
+
+  white-space: nowrap;
+}
+
+
+/* 위치 정보를 가져오지 못했어요 */
+
+.denied-title {
+  position: absolute;
+
+  left: 30px;
+  top: 148px;
+
+  margin: 0;
+
+  color: #624001;
+
+  font-family: Pretendard;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+
+/* 괜찮아요... */
+
+.denied-description {
+  position: absolute;
+
+  left: 30px;
+  top: 218px;
+
+  margin: 0;
+
+  color: rgba(120, 78, 0, 0.60);
+
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  white-space: nowrap;
+}
+
+
+/* 첫 번째 안내 박스 */
+
+.denied-info-box {
+  position: absolute;
+
+  left: 30px;
+  top: 256px;
+
+  display: flex;
+
+  width: 342px;
+
+  min-width: 80px;
+  min-height: 32px;
+
+  padding: 12px;
+
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  border-radius: 6px;
+  border: 1px solid #E5E7EB;
+
+  background: #FAFAFA;
+}
+
+
+/* 첫 번째 안내 박스 텍스트 */
+
+.denied-info-text {
+  align-self: stretch;
+
+  margin: 0;
+
+  color: #A0A0A0;
+
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+/* 나중에 위치를 허용하려면 */
+
+.denied-method-title {
+  position: absolute;
+
+  left: 30px;
+  top: 362px;
+
+  margin: 0;
+
+  color: #A0A0A0;
+
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  white-space: nowrap;
+}
+
+
+/* 두 번째 안내 박스 */
+
+.denied-method-box {
+  position: absolute;
+
+  left: 30px;
+  top: 384px;
+
+  display: flex;
+
+  width: 342px;
+
+  min-width: 80px;
+  min-height: 32px;
+
+  padding: 12px;
+
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  border-radius: 6px;
+  border: 1px solid #E5E7EB;
+
+  background: #F9FAFB;
+}
+
+
+/* ① ② ③ 안내 */
+
+.denied-method-text {
+  margin: 0;
+
+  color: #A0A0A0;
+
+  font-family: Pretendard;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+/* 확인 버튼 */
+
+.denied-confirm {
+  position: absolute;
+
+  left: 18px;
+  top: 782px;
+
+  display: flex;
+
+  width: 366px;
+  height: 65px;
+
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  border: 0;
+  border-radius: 15px;
+
+  background: #FFAD16;
+
+  box-shadow:
+    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+
+  color: #FFF;
+
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  letter-spacing: -1.44px;
+
+  cursor: pointer;
+}

@@ -1,0 +1,354 @@
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #f5f5f5;
+  font-family: Pretendard, sans-serif;
+}
+
+/* =========================
+   전체 홈 화면
+   Figma 기준: 402 x 898
+========================= */
+
+.home-page {
+  position: relative;
+
+  width: 100%;
+  max-width: 402px;
+  height: 874px;
+  margin: 0 auto;
+
+  background: #fff;
+
+  box-shadow:
+    0 -149px 63.2px -2px rgba(0, 0, 0, 0.04) inset;
+
+  overflow: hidden;
+}
+
+/*
+  header / main은 좌표 기준을 따로 만들지 않음.
+  안쪽 absolute 요소들이 home-page를 기준으로 움직이게 함.
+*/
+
+.home-header,
+.home-main {
+  position: static;
+}
+
+/* =========================
+   SugarGuard
+   X 16 / Y 45 / W 130 / H 35
+========================= */
+
+.home-logo {
+  position: absolute;
+  left: 16px;
+  top: 45px;
+
+  width: 130px;
+  height: 35px;
+
+  margin: 0;
+
+  color: #ffa600;
+
+  font-family: "Fugaz One", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.44px;
+}
+
+/* =========================
+   첫 도전 배지
+   X 289 / Y 45 / W 85 / H 35
+========================= */
+
+.challenge-badge {
+  position: absolute;
+  left: 289px;
+  top: 45px;
+
+  display: flex;
+
+  width: 85px;
+  height: 35px;
+
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 43px;
+  background: rgba(255, 224, 168, 0.6);
+}
+
+.challenge-emoji,
+.challenge-text {
+  font-family: Pretendard, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.78px;
+}
+
+.challenge-emoji {
+  color: #000;
+}
+
+.challenge-text {
+  color: #bd7b00;
+}
+
+/* =========================
+   식사하셨나요?
+   X 104 / Y 153 / W 194 / H 43
+========================= */
+
+.home-intro {
+  position: static;
+}
+
+.home-title {
+  position: absolute;
+  left: 104px;
+  top: 153px;
+
+  width: 194px;
+  height: 43px;
+
+  margin: 0;
+
+  color: #624001;
+  text-align: center;
+
+  font-family: Pretendard, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -2.16px;
+}
+
+/* =========================
+   설명 문구
+   X 146 / Y 206 / W 111 / H 38
+========================= */
+
+.home-description {
+  position: absolute;
+  left: 146px;
+  top: 206px;
+
+  width: 111px;
+  height: 38px;
+
+  margin: 0;
+
+  color: rgba(120, 78, 0, 0.6);
+  text-align: center;
+
+  font-family: Pretendard, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.96px;
+}
+
+/* =========================
+   밥 캐릭터 영역
+========================= */
+
+.meal-visual {
+  position: static;
+}
+
+/*
+  그라데이션
+  X 71 / Y 287 / W 259 / H 259
+*/
+
+.meal-gradient {
+  position: absolute;
+  left: 71px;
+  top: 287px;
+
+  width: 259px;
+  height: 259px;
+
+  border-radius: 259px;
+
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffa600 0%,
+    #fff7e7 100%
+  );
+
+  filter: blur(16.5px);
+}
+
+/*
+  밥 이미지
+  X 38 / Y 320 / W 327 / H 184
+*/
+
+.meal-image {
+  position: absolute;
+  left: 38px;
+  top: 320px;
+
+  width: 327px;
+  height: 184px;
+
+  object-fit: contain;
+
+  aspect-ratio: 327 / 184;
+}
+
+/* =========================
+   밥 먹었어요! 버튼
+   X 18 / Y 674 / W 366 / H 65
+========================= */
+
+.start-button {
+  position: absolute;
+  left: 18px;
+  top: 674px;
+
+  display: flex;
+
+  width: 366px;
+  height: 65px;
+
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: #ffad16;
+
+  box-shadow:
+    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+
+  color: #fff;
+
+  font-family: Pretendard, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1.44px;
+
+  cursor: pointer;
+}
+
+/* =========================
+   오늘 0/1회 완료 카드
+   X 18 / Y 752 / W 366 / H 95
+========================= */
+
+.daily-card {
+  position: absolute;
+  left: 18px;
+  top: 752px;
+
+  width: 366px;
+  height: 95px;
+
+  border-radius: 15px;
+
+  background: #ffefd3;
+}
+
+/*
+  텍스트 위치는 아직 XYWH를 새로 안 받았기 때문에
+  카드 내부 배치로 유지
+*/
+
+.daily-text {
+  position: absolute;
+  left: 16px;
+  top: 17px;
+
+  width: 91px;
+  height: 19px;
+
+  margin: 0;
+
+  color: #bd7b00;
+  font-family: Pretendard, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.96px;
+}
+/* =========================
+   진행바
+   페이지 기준:
+   X 30 / Y 715 / W 343 / H 27
+
+   카드 X/Y가 18 / 664이므로
+   카드 내부:
+   left 12 / top 51
+========================= */
+
+.progress-track {
+  position: absolute;
+  left: 12px;
+  top: 51px;
+
+  width: 343px;
+  height: 27px;
+
+  border-radius: 44px;
+  background: #ffe0a8;
+  overflow: hidden;
+}
+
+.progress-marker {
+  position: absolute;
+  left: 0;
+  top: -5px;
+
+  width: 24px;
+  height: 37px;
+
+  background: rgba(189, 123, 0, 0.6);
+
+  transition: width 0.4s ease;
+}
+
+.progress-marker.progress-complete {
+  width: 100%;
+}
+
+
+/* =========================
+   모바일 대응
+========================= */
+
+@media (max-width: 402px) {
+  .home-page {
+    width: 100vw;
+  }
+}

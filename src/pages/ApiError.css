@@ -1,0 +1,197 @@
+.api-error-page {
+  position: relative;
+
+  width: 100%;
+  max-width: 402px;
+  height: 874px;
+
+  margin: 0 auto;
+
+  background: #fff;
+  overflow: hidden;
+
+  font-family: Pretendard, sans-serif;
+}
+
+/* 뒤로가기 */
+
+.api-error-back {
+  position: absolute;
+  left: 0.5px;
+  top: 53px;
+
+  width: 35px;
+  height: 32px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+/* 상단 제목 */
+
+.api-error-header {
+  position: absolute;
+  left: 133.5px;
+  top: 57px;
+
+  width: 136px;
+  height: 24px;
+
+  margin: 0;
+
+  color: #624001;
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -1.2px;
+}
+
+/* 큰 안내 문구 */
+
+.api-error-title {
+  position: absolute;
+  left: 30px;
+  top: 147px;
+
+  width: 170px;
+  height: 62px;
+
+  margin: 0;
+
+  color: #624001;
+  font-family: Pretendard, sans-serif;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* 안내 박스 */
+
+.api-error-info {
+  position: absolute;
+  left: 30px;
+  top: 233px;
+
+  display: flex;
+
+  width: 342px;
+  min-width: 80px;
+  min-height: 32px;
+
+  padding: 12px;
+
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  border-radius: 6px;
+  border: 1px solid #E5E7EB;
+
+  background: #F9FAFB;
+}
+
+.api-error-info p {
+  margin: 0;
+
+  color: #A0A0A0;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* 다시 시도 */
+
+.api-error-retry {
+ position: absolute;
+
+  left: 18px;
+  top: 707px;
+
+  display: flex;
+
+  width: 366px;
+  height: 65px;
+
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  border: 0;
+  border-radius: 15px;
+
+  background: #FFAD16;
+
+  box-shadow:
+    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+
+  color: #FFF;
+
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  letter-spacing: -1.44px;
+
+  cursor: pointer;
+}
+
+/* 홈으로 */
+
+.api-error-home {
+  position: absolute;
+
+  left: 18px;
+  top: 782px;
+
+  display: flex;
+
+  width: 366px;
+  height: 65px;
+
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  border: 0;
+  border-radius: 15px;
+
+  background: #FFF;
+
+  box-shadow:
+    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+
+  color: #C6C6C6;
+
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  letter-spacing: -1.44px;
+
+  cursor: pointer;
+}

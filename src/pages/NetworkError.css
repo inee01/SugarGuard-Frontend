@@ -1,0 +1,210 @@
+.network-error-page {
+  position: relative;
+  width: 402px;
+  height: 874px;
+  margin: 0 auto;
+
+  background: #FFF;
+  font-family: Pretendard, sans-serif;
+  box-sizing: border-box;
+}
+
+.network-error-page *,
+.network-error-page *::before,
+.network-error-page *::after {
+  box-sizing: border-box;
+}
+
+
+/* 뒤로가기 */
+
+.network-error-back {
+  position: absolute;
+  left: 0.5px;
+  top: 53px;
+
+  width: 35px;
+  height: 32px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+
+/* 네트워크 오류 안내 */
+
+.network-error-header {
+  position: absolute;
+
+  left: 133.5px;
+  top: 57px;
+
+  width: 138px;
+  height: 24px;
+
+  color: #624001;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -1.2px;
+
+  white-space: nowrap;
+}
+
+
+/* 와이파이 아이콘 */
+
+.network-error-icon {
+  position: absolute;
+
+  left: 182.04px;
+  top: 144px;
+
+  width: 37.921px;
+  height: 31.606px;
+
+  fill: #624001;
+}
+
+
+/* 연결 확인 중 */
+
+.network-error-title {
+  position: absolute;
+
+  left: 138.5px;
+  top: 193.61px;
+
+  width: 125px;
+  height: 31px;
+
+  margin: 0;
+
+  color: #624001;
+  font-family: Pretendard;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  white-space: nowrap;
+}
+
+
+/* 설명 */
+
+.network-error-description {
+  position: absolute;
+
+  left: 54px;
+  top: 240.61px;
+
+  width: 294px;
+  height: 28px;
+
+  margin: 0;
+
+  color: rgba(120, 78, 0, 0.60);
+  text-align: center;
+
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+/* 다시 시도 */
+
+.network-error-retry {
+  position: absolute;
+
+  left: 18px;
+  top: 707px;
+
+  display: flex;
+
+  width: 366px;
+  height: 65px;
+
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  border: 0;
+  border-radius: 15px;
+
+  background: #FFAD16;
+
+  box-shadow:
+    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+
+  color: #FFF;
+
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  letter-spacing: -1.44px;
+
+  cursor: pointer;
+}
+
+
+/* 홈으로 */
+
+.network-error-home {
+  position: absolute;
+
+  left: 18px;
+  top: 782px;
+
+  display: flex;
+
+  width: 366px;
+  height: 65px;
+
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  border: 0;
+  border-radius: 15px;
+
+  background: #FFF;
+
+  box-shadow:
+    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+
+  color: #C6C6C6;
+
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  letter-spacing: -1.44px;
+
+  cursor: pointer;
+}

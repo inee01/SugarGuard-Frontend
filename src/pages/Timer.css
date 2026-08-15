@@ -1,0 +1,312 @@
+.timer-page {
+  position: relative;
+  width: 100%;
+  max-width: 402px;
+  height: 874px;
+  margin: 0 auto;
+  background: #FFF;
+  overflow: hidden;
+}
+
+.timer-back {
+  position: absolute;
+  left: 0.5px;
+  top: 53px;
+
+  width: 35px;
+  height: 32px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.timer-header {
+  position: absolute;
+  left: 159px;
+  top: 57px;
+
+  width: 89px;
+  height: 24px;
+  margin: 0;
+
+  color: #624001;
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -1.2px;
+}
+
+.timer-close {
+  position: absolute;
+  left: 363px;
+  top: 54.5px;
+
+  width: 30px;
+  height: 29px;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.timer-title {
+  position: absolute;
+  left: 107px;
+  top: 182px;
+
+  width: 186px;
+  height: 31px;
+  margin: 0;
+
+  color: #624001;
+  text-align: center;
+  font-family: Pretendard, sans-serif;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1.56px;
+}
+
+.timer-activity-name {
+  position: absolute;
+  top: 223px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: max-content;
+  max-width: 300px;
+  height: 19px;
+  margin: 0;
+
+  color: rgba(120, 78, 0, 0.60);
+  text-align: center;
+  font-family: Pretendard, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.96px;
+
+  white-space: nowrap;
+}
+
+.timer-circle {
+  position: absolute;
+  left: 79.5px;
+  top: 266.5px;
+
+  width: 243px;
+  height: 243px;
+}
+
+.timer-circle svg {
+  display: block;
+  width: 243px;
+  height: 243px;
+}
+
+.timer-circle-paths {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+}
+
+.timer-circle-progress {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  transform: rotate(-1.5deg);
+}
+
+.timer-time {
+  position: absolute;
+  left: 151px;
+  top: 357px;
+
+  width: 100px;
+  height: 48px;
+  margin: 0;
+
+  color: #624001;
+  font-family: Pretendard, sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  letter-spacing: -2.4px;
+}
+
+.timer-remaining-label {
+  position: absolute;
+  left: 176px;
+  top: 404px;
+
+  width: 50px;
+  height: 18px;
+  margin: 0;
+
+  color: #624001;
+  text-align: center;
+  font-family: Pretendard, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.9px;
+}
+
+.timer-progress-track {
+  position: absolute;
+  left: 47px;
+  top: 603px;
+
+  width: 309px;
+  height: 11px;
+
+  background: #FFE0A8;
+  border-radius: 999px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.timer-progress-fill {
+  width: 0;
+  height: 100%;
+  background: #FFAD16;
+  border-radius: 999px;
+}
+
+.timer-progress-food {
+  position: absolute;
+  top: 583px;
+
+  width: 62px;
+  height: 42px;
+
+  object-fit: contain;
+  aspect-ratio: 58 / 39;
+  z-index: 2;
+}
+
+.timer-progress-shield {
+  position: absolute;
+  left: 283px;
+  top: 566px;
+
+  width: 119px;
+  height: 79px;
+
+  object-fit: cover;
+  aspect-ratio: 119 / 79;
+  z-index: 2;
+}
+
+.timer-progress-text {
+  position: absolute;
+  left: 137px;
+  top: 663px;
+
+  width: 128px;
+  height: 24px;
+  margin: 0;
+
+  color: rgba(189, 123, 0, 0.60);
+  text-align: center;
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.2px;
+}
+
+.timer-stop-button {
+  position: absolute;
+  left: 18px;
+  top: 782px;
+
+  display: flex;
+  width: 173px;
+  height: 65px;
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  box-sizing: border-box;
+  border: none;
+  border-radius: 15px;
+  background: #FFF;
+  box-shadow: -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+}
+
+.timer-stop-icon {
+  width: 21px;
+  height: 21px;
+
+  flex-shrink: 0;
+}
+
+.timer-stop-text {
+  color: #C6C6C6;
+  text-align: center;
+  font-family: Pretendard, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1.44px;
+}
+
+.timer-pause-button {
+  position: absolute;
+  left: 211px;
+  top: 782px;
+
+  display: flex;
+  width: 173px;
+  height: 65px;
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  box-sizing: border-box;
+  border: none;
+  border-radius: 15px;
+  background: #FFAD16;
+  box-shadow: -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+}
+
+.timer-pause-icon {
+  width: 18px;
+  height: 21px;
+
+  flex-shrink: 0;
+}
+
+.timer-pause-text {
+  color: #FFF;
+  text-align: center;
+  font-family: Pretendard, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1.44px;
+}
