@@ -3,8 +3,10 @@
 .sleepiness-result-page {
   position: relative;
 
-  width: 402px;
-  height: 874px;
+  width: 100%;
+  max-width: 402px;
+
+  height: min(100dvh, 874px);
 
   margin: 0 auto;
 
@@ -21,21 +23,25 @@
   box-sizing: border-box;
 }
 
+/* =========================
+   상단
+========================= */
+
 .sleepiness-result-header {
   position: absolute;
 
   left: 0;
-  top: 46px;
+  top: 0;
 
-  width: 402px;
-  height: 46px;
+  width: 100%;
+  height: 100px;
 }
 
 .sleepiness-result-header-title {
   position: absolute;
 
   left: 50%;
-  top: 11px;
+  top: clamp(22px, 6.52dvh, 57px);
 
   margin: 0;
 
@@ -56,8 +62,8 @@
 .sleepiness-result-close {
   position: absolute;
 
-  left: 355px;
-  top: 8.5px;
+  right: 17px;
+  top: clamp(19.5px, 6.23dvh, 54.5px);
 
   width: 30px;
   height: 29px;
@@ -80,13 +86,18 @@
   height: 29px;
 }
 
+/* =========================
+   874px 기준 기존 위치
+========================= */
+
 .sleepiness-result-content {
   position: absolute;
 
   left: 18px;
   top: 145px;
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
 }
 
 .sleepiness-result-title {
@@ -122,7 +133,7 @@
 .sleepiness-result-comparison {
   display: flex;
 
-  width: 366px;
+  width: 100%;
 
   margin-top: 55px;
 
@@ -218,7 +229,7 @@
 .sleepiness-result-message-box {
   display: flex;
 
-  width: 366px;
+  width: 100%;
   min-height: 58px;
 
   margin-top: 30px;
@@ -244,15 +255,20 @@
   text-align: center;
 }
 
+/* =========================
+   하단 버튼
+========================= */
+
 .sleepiness-result-home {
   position: absolute;
 
   left: 18px;
-  top: 782px;
+  bottom: 22px;
 
   display: flex;
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 65px;
 
   padding: 10px;
@@ -278,4 +294,109 @@
   letter-spacing: -1.44px;
 
   cursor: pointer;
+}
+
+/* =========================
+   874px보다 낮은 화면
+========================= */
+
+@media (max-height: 873px) {
+  .sleepiness-result-content {
+    top: 115px;
+  }
+
+  .sleepiness-result-comparison {
+    margin-top: 38px;
+  }
+
+  .sleepiness-result-difference {
+    margin-top: 27px;
+  }
+
+  .sleepiness-result-message-box {
+    margin-top: 23px;
+    padding: 16px 18px;
+  }
+}
+
+/* =========================
+   아주 낮은 화면
+========================= */
+
+@media (max-height: 700px) {
+  .sleepiness-result-header-title {
+    top: 18px;
+  }
+
+  .sleepiness-result-close {
+    top: 15.5px;
+  }
+
+  .sleepiness-result-content {
+    top: 92px;
+  }
+
+  .sleepiness-result-title {
+    font-size: 24px;
+  }
+
+  .sleepiness-result-description {
+    margin-top: 9px;
+    font-size: 13px;
+  }
+
+  .sleepiness-result-comparison {
+    margin-top: 28px;
+    gap: 15px;
+  }
+
+  .sleepiness-result-value-box {
+    width: 108px;
+    height: 108px;
+  }
+
+  .sleepiness-result-value {
+    font-size: 31px;
+  }
+
+  .sleepiness-result-difference {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+
+  .sleepiness-result-message-box {
+    margin-top: 18px;
+    padding: 13px 15px;
+
+    font-size: 13px;
+  }
+
+  .sleepiness-result-home {
+    bottom: 23px;
+    height: 58px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sleepiness-result-close {
+    right: 10px;
+  }
+
+  .sleepiness-result-content {
+    left: 14px;
+    width: calc(100% - 28px);
+  }
+
+  .sleepiness-result-comparison {
+    gap: 10px;
+  }
+
+  .sleepiness-result-value-box {
+    width: 105px;
+  }
+
+  .sleepiness-result-home {
+    left: 14px;
+    width: calc(100% - 28px);
+  }
 }

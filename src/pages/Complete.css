@@ -1,13 +1,24 @@
 .complete-page {
   position: relative;
 
-  width: 402px;
-  height: 874px;
+  width: 100%;
+  max-width: 402px;
+
+  height: min(100dvh, 874px);
 
   margin: 0 auto;
 
-  background: #FFF;
+  background: #fff;
   overflow: hidden;
+
+  font-family: Pretendard, sans-serif;
+  box-sizing: border-box;
+}
+
+.complete-page *,
+.complete-page *::before,
+.complete-page *::after {
+  box-sizing: border-box;
 }
 
 .complete-confetti {
@@ -60,13 +71,20 @@
   }
 }
 
+/* =========================
+   874px 기준 기존 위치
+========================= */
+
 .complete-shield {
   position: absolute;
 
-  left: 1px;
+  left: 50%;
   top: 72px;
 
+  transform: translateX(-50%);
+
   width: 401px;
+  max-width: 100%;
   height: 267px;
 
   object-fit: cover;
@@ -93,6 +111,8 @@
   line-height: normal;
 
   letter-spacing: -2.16px;
+
+  white-space: nowrap;
 }
 
 .complete-description {
@@ -123,7 +143,8 @@
   left: 18px;
   top: calc(50% + 10px);
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
 
   display: flex;
 
@@ -173,7 +194,8 @@
   left: 18px;
   top: calc(50% + 101px);
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 91px;
 
   border: 1px solid #ffefd3;
@@ -218,18 +240,23 @@
   font-weight: 500;
 }
 
+/* =========================
+   하단 버튼
+========================= */
+
 .complete-button {
   position: absolute;
 
   left: 18px;
-  top: 782px;
+  bottom: 22px;
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 65px;
 
-  background: #FFAD16;
+  background: #ffad16;
 
-  color: #FFF;
+  color: #fff;
 
   border: none;
   border-radius: 15px;
@@ -246,4 +273,137 @@
 
 .complete-button:active {
   transform: translateY(1px);
+}
+
+/* =========================
+   874px보다 낮은 화면
+========================= */
+
+@media (max-height: 873px) {
+  .complete-shield {
+    top: 45px;
+
+    width: 360px;
+    height: auto;
+  }
+
+  .complete-title {
+    top: 255px;
+  }
+
+  .complete-description {
+    top: 312px;
+  }
+
+  .complete-summary {
+    top: 405px;
+  }
+
+  .complete-badge {
+    top: 496px;
+  }
+}
+
+/* =========================
+   아주 낮은 화면
+========================= */
+
+@media (max-height: 700px) {
+  .complete-shield {
+    top: 24px;
+
+    width: 315px;
+  }
+
+  .complete-title {
+    top: 210px;
+
+    font-size: 32px;
+  }
+
+  .complete-description {
+    top: 260px;
+
+    font-size: 14px;
+  }
+
+  .complete-summary {
+    top: 340px;
+
+    gap: 10px;
+  }
+
+  .complete-summary-item {
+    padding: 11px 8px;
+  }
+
+  .complete-summary-item strong {
+    font-size: 17px;
+  }
+
+  .complete-summary-item span {
+    font-size: 12px;
+  }
+
+  .complete-badge {
+    top: 420px;
+    height: 80px;
+  }
+
+  .badge-content {
+    gap: 7px;
+  }
+
+  .badge-line-primary {
+    font-size: 18px;
+  }
+
+  .badge-line-secondary {
+    font-size: 12px;
+  }
+
+  .complete-button {
+    bottom: 23px;
+    height: 58px;
+
+    font-size: 23px;
+  }
+}
+
+/* =========================
+   좁은 화면
+========================= */
+
+@media (max-width: 360px) {
+  .complete-summary,
+  .complete-badge,
+  .complete-button {
+    left: 14px;
+    width: calc(100% - 28px);
+  }
+
+  .complete-summary {
+    gap: 8px;
+  }
+
+  .complete-summary-item {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .complete-summary-item strong {
+    font-size: 16px;
+  }
+
+  .complete-summary-item span {
+    font-size: 11px;
+  }
+
+  .badge-line-primary {
+    font-size: 17px;
+  }
+
+  .badge-line-secondary {
+    font-size: 11px;
+  }
 }

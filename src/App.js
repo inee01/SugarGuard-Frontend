@@ -19,6 +19,8 @@ import {
   mockOutdoorRecommendation
 } from "./data/mockRecommendation";
 
+const API_BASE_URL = "http://192.168.45.170:8080";
+
 function App() {
   const [page, setPage] = useState("home");
   const [recommendationData, setRecommendationData] = useState(null);
@@ -34,7 +36,7 @@ function App() {
   const fetchHomeData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/v1/home"
+        `${API_BASE_URL}/api/v1/home`
       );
 
       if (!response.ok) {
@@ -58,7 +60,7 @@ function App() {
   const requestRecommendation = async (coords) => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/v1/recommendations",
+        `${API_BASE_URL}/api/v1/recommendations`,
         {
           method: "POST",
           headers: {
@@ -114,7 +116,7 @@ function App() {
   const handleActivityComplete = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/v1/records",
+        `${API_BASE_URL}/api/v1/records`,
         {
           method: "POST",
           headers: {

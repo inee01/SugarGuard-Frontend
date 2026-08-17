@@ -3,29 +3,43 @@
 
   width: 100%;
   max-width: 402px;
-  height: 874px;
+
+  height: min(100dvh, 874px);
 
   margin: 0 auto;
 
   background: #fff;
   overflow: hidden;
+
+  font-family: Pretendard, sans-serif;
+  box-sizing: border-box;
 }
+
+.environment-loading-page *,
+.environment-loading-page *::before,
+.environment-loading-page *::after {
+  box-sizing: border-box;
+}
+
+/* =========================
+   상단
+========================= */
 
 .environment-loading-header {
   position: absolute;
 
   left: 0;
-  top: 46px;
+  top: 0;
 
-  width: 402px;
-  height: 46px;
+  width: 100%;
+  height: 100px;
 }
 
 .environment-loading-back {
   position: absolute;
 
   left: 12px;
-  top: 7px;
+  top: clamp(18px, 6.06dvh, 53px);
 
   width: 35px;
   height: 32px;
@@ -48,11 +62,36 @@
   height: 32px;
 }
 
+.environment-loading-title {
+  position: absolute;
+
+  left: 50%;
+  top: clamp(22px, 6.52dvh, 57px);
+
+  margin: 0;
+
+  transform: translateX(-50%);
+
+  color: #624001;
+
+  text-align: center;
+
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  letter-spacing: -1.2px;
+
+  white-space: nowrap;
+}
+
 .environment-loading-close {
   position: absolute;
 
-  left: 355px;
-  top: 8.5px;
+  right: 17px;
+  top: clamp(19.5px, 6.23dvh, 54.5px);
 
   width: 30px;
   height: 29px;
@@ -75,36 +114,17 @@
   height: 29px;
 }
 
-.environment-loading-title {
-  position: absolute;
-
-  left: 50%;
-  top: 11px;
-
-  margin: 0;
-
-  transform: translateX(-50%);
-
-  color: #624001;
-
-  text-align: center;
-
-  font-family: Pretendard, sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
-  letter-spacing: -1.2px;
-
-  white-space: nowrap;
-}
+/* =========================
+   위치 분석 그래픽
+========================= */
 
 .environment-loading-graphic {
   position: absolute;
 
-  left: 79px;
-  top: 131px;
+  left: 50%;
+  top: clamp(105px, 14.99dvh, 131px);
+
+  transform: translateX(-50%);
 
   width: 243px;
   height: 243px;
@@ -177,11 +197,17 @@
   }
 }
 
+/* =========================
+   분석 중 메시지
+========================= */
+
 .environment-loading-message {
   position: absolute;
 
-  left: 99px;
-  top: 397px;
+  left: 50%;
+  top: clamp(330px, 45.42dvh, 397px);
+
+  transform: translateX(-50%);
 
   width: 204px;
   height: 62px;
@@ -201,13 +227,18 @@
   letter-spacing: -1.56px;
 }
 
+/* =========================
+   분석 단계
+========================= */
+
 .environment-steps {
   position: absolute;
 
   left: 18px;
-  top: 518px;
+  top: clamp(430px, 59.27dvh, 518px);
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 228px;
 
   border-radius: 15px;
@@ -222,7 +253,7 @@
   display: flex;
   align-items: center;
 
-  width: 366px;
+  width: 100%;
   height: 57px;
 
   padding-left: 26px;
@@ -296,8 +327,98 @@
   color: #624001;
 }
 
-@media (max-width: 402px) {
-  .environment-loading-page {
-    width: 100vw;
+/* =========================
+   낮은 화면
+========================= */
+
+@media (max-height: 700px) {
+  .environment-loading-back {
+    top: 14px;
+  }
+
+  .environment-loading-title {
+    top: 18px;
+  }
+
+  .environment-loading-close {
+    top: 15.5px;
+  }
+
+  .environment-loading-graphic {
+    top: 88px;
+
+    width: 205px;
+    height: 205px;
+  }
+
+  .environment-location-icon {
+    width: 205px;
+    height: 205px;
+  }
+
+  .environment-wave-outer {
+    width: 205px;
+    height: 205px;
+  }
+
+  .environment-wave-mid {
+    width: 149px;
+    height: 149px;
+  }
+
+  .environment-wave-inner {
+    width: 99px;
+    height: 99px;
+  }
+
+  .environment-location-pin {
+    left: 82.5px;
+    top: 78.5px;
+
+    width: 40px;
+    height: auto;
+  }
+
+  .environment-loading-message {
+    top: 310px;
+
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  .environment-steps {
+    top: 395px;
+    height: 204px;
+  }
+
+  .environment-step {
+    height: 51px;
+  }
+}
+
+/* =========================
+   좁은 화면
+========================= */
+
+@media (max-width: 360px) {
+  .environment-loading-back {
+    left: 10px;
+  }
+
+  .environment-loading-close {
+    right: 10px;
+  }
+
+  .environment-steps {
+    left: 14px;
+    width: calc(100% - 28px);
+  }
+
+  .environment-step {
+    padding-left: 20px;
+  }
+
+  .environment-step-label {
+    font-size: 14px;
   }
 }

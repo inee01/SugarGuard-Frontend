@@ -1,12 +1,19 @@
 .network-error-page {
   position: relative;
-  width: 402px;
-  height: 874px;
+
+  width: 100%;
+  max-width: 402px;
+
+  height: min(100dvh, 874px);
+
   margin: 0 auto;
 
-  background: #FFF;
+  background: #fff;
+
   font-family: Pretendard, sans-serif;
   box-sizing: border-box;
+
+  overflow: hidden;
 }
 
 .network-error-page *,
@@ -19,7 +26,7 @@
   position: absolute;
 
   left: 12px;
-  top: 53px;
+  top: clamp(18px, 6.06dvh, 53px);
 
   width: 35px;
   height: 32px;
@@ -42,15 +49,21 @@
 .network-error-header {
   position: absolute;
 
-  left: 133.5px;
-  top: 57px;
+  left: 50%;
+  top: clamp(22px, 6.52dvh, 57px);
+
+  transform: translateX(-50%);
 
   width: 138px;
   height: 24px;
 
+  margin: 0;
+
   color: #624001;
 
-  font-family: Pretendard;
+  text-align: center;
+
+  font-family: Pretendard, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -64,8 +77,10 @@
 .network-error-icon {
   position: absolute;
 
-  left: 182.04px;
-  top: 144px;
+  left: 50%;
+  top: clamp(105px, 16.48dvh, 144px);
+
+  transform: translateX(-50%);
 
   width: 37.921px;
   height: 31.606px;
@@ -76,8 +91,10 @@
 .network-error-title {
   position: absolute;
 
-  left: 138.5px;
-  top: 193.61px;
+  left: 50%;
+  top: clamp(150px, 22.15dvh, 193.61px);
+
+  transform: translateX(-50%);
 
   width: 125px;
   height: 31px;
@@ -86,7 +103,9 @@
 
   color: #624001;
 
-  font-family: Pretendard;
+  text-align: center;
+
+  font-family: Pretendard, sans-serif;
   font-size: 26px;
   font-style: normal;
   font-weight: 700;
@@ -98,19 +117,21 @@
 .network-error-description {
   position: absolute;
 
-  left: 54px;
-  top: 240.61px;
+  left: 50%;
+  top: clamp(195px, 27.53dvh, 240.61px);
 
-  width: 294px;
+  transform: translateX(-50%);
+
+  width: min(294px, calc(100% - 60px));
   height: 28px;
 
   margin: 0;
 
-  color: rgba(120, 78, 0, 0.60);
+  color: rgba(120, 78, 0, 0.6);
 
   text-align: center;
 
-  font-family: Pretendard;
+  font-family: Pretendard, sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -121,11 +142,12 @@
   position: absolute;
 
   left: 18px;
-  top: 707px;
+  bottom: 97px;
 
   display: flex;
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 65px;
 
   padding: 10px;
@@ -138,14 +160,14 @@
   border: 0;
   border-radius: 15px;
 
-  background: #FFAD16;
+  background: #ffad16;
 
   box-shadow:
     -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
 
-  color: #FFF;
+  color: #fff;
 
-  font-family: Pretendard;
+  font-family: Pretendard, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -160,11 +182,12 @@
   position: absolute;
 
   left: 18px;
-  top: 782px;
+  bottom: 22px;
 
   display: flex;
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 65px;
 
   padding: 10px;
@@ -177,14 +200,14 @@
   border: 0;
   border-radius: 15px;
 
-  background: #FFF;
+  background: #fff;
 
   box-shadow:
     -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
 
-  color: #C6C6C6;
+  color: #c6c6c6;
 
-  font-family: Pretendard;
+  font-family: Pretendard, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -193,4 +216,58 @@
   letter-spacing: -1.44px;
 
   cursor: pointer;
+}
+
+@media (max-height: 700px) {
+  .network-error-back {
+    top: 14px;
+  }
+
+  .network-error-header {
+    top: 18px;
+  }
+
+  .network-error-icon {
+    top: 92px;
+  }
+
+  .network-error-title {
+    top: 137px;
+    font-size: 24px;
+  }
+
+  .network-error-description {
+    top: 178px;
+  }
+
+  .network-error-retry {
+    bottom: 91px;
+    height: 58px;
+  }
+
+  .network-error-home {
+    bottom: 23px;
+    height: 58px;
+  }
+}
+
+@media (max-width: 360px) {
+  .network-error-back {
+    left: 10px;
+  }
+
+  .network-error-title {
+    font-size: 24px;
+  }
+
+  .network-error-description {
+    width: calc(100% - 36px);
+    font-size: 11px;
+  }
+
+  .network-error-retry,
+  .network-error-home {
+    left: 14px;
+    width: calc(100% - 28px);
+  }
 }

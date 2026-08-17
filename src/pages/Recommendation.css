@@ -3,108 +3,152 @@
 
 .recommendation-page {
   position: relative;
+
   width: 100%;
   max-width: 402px;
-  height: 874px;
+
+  height: min(100dvh, 874px);
+
   margin: 0 auto;
+
   background: #fff;
   overflow: hidden;
+
+  font-family: Pretendard, sans-serif;
+  box-sizing: border-box;
+}
+
+.recommendation-page *,
+.recommendation-page *::before,
+.recommendation-page *::after {
+  box-sizing: border-box;
 }
 
 .recommendation-header {
   position: absolute;
+
   left: 0;
-  top: 46px;
-  width: 402px;
-  height: 46px;
+  top: 0;
+
+  width: 100%;
+  height: 100px;
 }
 
 .recommendation-back {
   position: absolute;
+
   left: 12px;
-  top: 7px;
+  top: clamp(18px, 6.06dvh, 53px);
+
   width: 35px;
   height: 32px;
+
   padding: 0;
   margin: 0;
+
   border: none;
   background: transparent;
+
   opacity: 0.7;
+
   cursor: pointer;
 }
 
 .recommendation-back svg {
   display: block;
+
   width: 35px;
   height: 32px;
 }
 
 .recommendation-close {
   position: absolute;
-  left: 355px;
-  top: 8.5px;
+
+  right: 17px;
+  top: clamp(19.5px, 6.23dvh, 54.5px);
+
   width: 30px;
   height: 29px;
+
   padding: 0;
   margin: 0;
+
   border: none;
   background: transparent;
+
   opacity: 0.7;
+
   cursor: pointer;
 }
 
 .recommendation-close svg {
   display: block;
+
   width: 30px;
   height: 29px;
 }
 
 .recommendation-title {
   position: absolute;
+
   left: 50%;
-  top: 11px;
+  top: clamp(22px, 6.52dvh, 57px);
+
   margin: 0;
+
   transform: translateX(-50%);
+
   color: #624001;
+
   text-align: center;
+
   font-family: Pretendard, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
   letter-spacing: -1.2px;
+
   white-space: nowrap;
 }
 
 .recommendation-content {
   position: absolute;
+
   left: 18px;
-  top: 114px;
-  width: 366px;
+  top: clamp(96px, 13.04dvh, 114px);
+
   display: flex;
   flex-direction: column;
-  gap: 20px;
+
+  width: calc(100% - 36px);
+  max-width: 366px;
+
+  gap: clamp(14px, 2.29dvh, 20px);
 }
 
 .recommendation-env-card {
   display: flex;
-  width: 366px;
+
+  width: 100%;
   height: 54px;
 
   justify-content: center;
   align-items: center;
-  gap: 97px;
+
+  gap: clamp(50px, 24vw, 97px);
 
   border-radius: 15px;
   border: 1px solid #ffefd3;
-  background: #fff;
 
-  box-sizing: border-box;
+  background: #fff;
 }
 
 .recommendation-env-item {
   display: flex;
   align-items: center;
+
   gap: 7px;
 }
 
@@ -112,6 +156,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 31px;
   height: 31px;
 }
@@ -123,12 +168,15 @@
 
 .recommendation-env-text {
   margin: 0;
+
   color: #624001;
+
   font-family: Pretendard, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
   letter-spacing: -0.96px;
 }
 
@@ -137,29 +185,37 @@
 }
 
 .recommendation-main-title {
-  margin: 22px 0 0 0;
+  margin: clamp(14px, 2.52dvh, 22px) 0 0;
+
   color: #624001;
+
   font-family: Pretendard, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
   letter-spacing: -1.44px;
 }
 
 .recommendation-main-title.no-environment {
-  margin-top: 12;
+  margin-top: 12px;
 }
 
 .recommendation-activity-card {
   display: flex;
   align-items: center;
+
   gap: 15px;
-  width: 366px;
+
+  width: 100%;
   min-height: 83px;
+
   padding: 16px 18px;
+
   border-radius: 15px;
   border: 1px solid #ffefd3;
+
   background: #fff;
 }
 
@@ -167,10 +223,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 44px;
   height: 44px;
+
   border-radius: 999px;
+
   background: #fff1d8;
+
   flex-shrink: 0;
 }
 
@@ -178,6 +238,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 30px;
   height: 30px;
 }
@@ -193,65 +254,79 @@
 
 .recommendation-activity-name {
   margin: 0;
+
   color: #624001;
+
   font-family: Pretendard, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
   letter-spacing: -1.08px;
 }
 
 .recommendation-activity-desc {
-  margin: 6px 0 0 0;
+  margin: 6px 0 0;
+
   color: rgba(120, 78, 0, 0.6);
+
   font-family: Pretendard, sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
   letter-spacing: -0.72px;
+
   word-break: break-word;
 }
 
 .recommendation-location-section {
-  width: 366px;
+  width: 100%;
 }
 
 .recommendation-location-title {
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
 
   color: #624001;
+
   font-family: Pretendard, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
   letter-spacing: -0.96px;
 }
 
 .recommendation-location-box {
   position: relative;
 
-  width: 366px;
+  width: 100%;
   min-height: 128px;
+
   padding: 18px 16px;
-  box-sizing: border-box;
 
   border-radius: 15px;
   border: 1px solid #ffefd3;
+
   background: #fff;
 }
 
 .recommendation-reason-content {
   margin: 0;
+
   color: rgba(120, 78, 0, 0.72);
+
   font-family: Pretendard, sans-serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
   line-height: 1.6;
+
   letter-spacing: -0.78px;
+
   white-space: pre-wrap;
   word-break: break-word;
 }
@@ -259,24 +334,28 @@
 .recommendation-location-name {
   margin: 0;
 
-  color: rgba(120, 78, 0, 0.60);
+  color: rgba(120, 78, 0, 0.6);
+
   font-family: Pretendard, sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
   line-height: 19px;
+
   letter-spacing: -0.9px;
 }
 
 .recommendation-location-info {
-  margin: 2px 0 0 0;
+  margin: 2px 0 0;
 
-  color: rgba(120, 78, 0, 0.60);
+  color: rgba(120, 78, 0, 0.6);
+
   font-family: Pretendard, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 19px;
+
   letter-spacing: -0.84px;
 }
 
@@ -286,8 +365,8 @@
   left: 0;
   top: 0;
 
-  width: 402px;
-  height: 874px;
+  width: 100%;
+  height: 100%;
 
   pointer-events: none;
 }
@@ -296,11 +375,12 @@
   position: absolute;
 
   left: 18px;
-  top: 707px;
+  bottom: 97px;
 
   display: flex;
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 65px;
 
   justify-content: center;
@@ -327,6 +407,7 @@
   letter-spacing: -1.44px;
 
   cursor: pointer;
+
   pointer-events: auto;
 }
 
@@ -334,11 +415,12 @@
   position: absolute;
 
   left: 18px;
-  top: 782px;
+  bottom: 22px;
 
   display: flex;
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 65px;
 
   padding: 10px;
@@ -367,6 +449,7 @@
   letter-spacing: -1.44px;
 
   cursor: pointer;
+
   pointer-events: auto;
 }
 
@@ -378,24 +461,30 @@
 
 .recommendation-location-map {
   position: absolute;
+
   right: 8px;
   bottom: 9px;
 
   display: flex;
+
   width: 92px;
   height: 36px;
+
   padding: 10px;
 
   justify-content: center;
   align-items: center;
+
   gap: 2px;
 
-  box-sizing: border-box;
   margin: 0;
+
   border: none;
+
   background: transparent;
 
-  color: #BD7B0099;
+  color: #bd7b0099;
+
   font-family: Pretendard, sans-serif;
   font-size: 12px;
   font-style: normal;
@@ -403,4 +492,85 @@
   line-height: normal;
 
   cursor: pointer;
+}
+
+@media (max-height: 700px) {
+  .recommendation-back {
+    top: 14px;
+  }
+
+  .recommendation-title {
+    top: 18px;
+  }
+
+  .recommendation-close {
+    top: 15.5px;
+  }
+
+  .recommendation-content {
+    top: 88px;
+
+    gap: 11px;
+  }
+
+  .recommendation-env-card {
+    height: 48px;
+  }
+
+  .recommendation-main-title {
+    margin-top: 8px;
+
+    font-size: 22px;
+  }
+
+  .recommendation-activity-card {
+    min-height: 70px;
+
+    padding: 12px 16px;
+  }
+
+  .recommendation-location-title {
+    margin-bottom: 10px;
+  }
+
+  .recommendation-location-box {
+    min-height: 105px;
+
+    padding: 13px 14px;
+  }
+
+  .recommendation-start-button {
+    bottom: 91px;
+    height: 58px;
+  }
+
+  .recommendation-reject-button {
+    bottom: 23px;
+    height: 58px;
+  }
+}
+
+@media (max-width: 360px) {
+  .recommendation-back {
+    left: 10px;
+  }
+
+  .recommendation-close {
+    right: 10px;
+  }
+
+  .recommendation-content {
+    left: 14px;
+    width: calc(100% - 28px);
+  }
+
+  .recommendation-env-card {
+    gap: 35px;
+  }
+
+  .recommendation-start-button,
+  .recommendation-reject-button {
+    left: 14px;
+    width: calc(100% - 28px);
+  }
 }

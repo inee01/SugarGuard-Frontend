@@ -3,7 +3,8 @@
 
   width: 100%;
   max-width: 402px;
-  height: 874px;
+
+  height: min(100dvh, 874px);
 
   margin: 0 auto;
 
@@ -11,13 +12,20 @@
   overflow: hidden;
 
   font-family: Pretendard, sans-serif;
+  box-sizing: border-box;
+}
+
+.api-error-page *,
+.api-error-page *::before,
+.api-error-page *::after {
+  box-sizing: border-box;
 }
 
 .api-error-back {
   position: absolute;
 
   left: 12px;
-  top: 53px;
+  top: clamp(18px, 6.06dvh, 53px);
 
   width: 35px;
   height: 32px;
@@ -48,7 +56,7 @@
   position: absolute;
 
   left: 50%;
-  top: 57px;
+  top: clamp(22px, 6.52dvh, 57px);
 
   margin: 0;
 
@@ -71,7 +79,7 @@
   position: absolute;
 
   left: 30px;
-  top: 147px;
+  top: clamp(108px, 16.82dvh, 147px);
 
   width: 170px;
   height: 62px;
@@ -91,11 +99,12 @@
   position: absolute;
 
   left: 30px;
-  top: 233px;
+  top: clamp(180px, 26.66dvh, 233px);
 
   display: flex;
 
-  width: 342px;
+  width: calc(100% - 60px);
+  max-width: 342px;
 
   min-width: 80px;
   min-height: 32px;
@@ -108,15 +117,15 @@
   gap: 12px;
 
   border-radius: 6px;
-  border: 1px solid #E5E7EB;
+  border: 1px solid #e5e7eb;
 
-  background: #F9FAFB;
+  background: #f9fafb;
 }
 
 .api-error-info p {
   margin: 0;
 
-  color: #A0A0A0;
+  color: #a0a0a0;
 
   font-family: Inter, sans-serif;
   font-size: 12px;
@@ -129,11 +138,12 @@
   position: absolute;
 
   left: 18px;
-  top: 707px;
+  bottom: 97px;
 
   display: flex;
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 65px;
 
   padding: 10px;
@@ -146,12 +156,12 @@
   border: 0;
   border-radius: 15px;
 
-  background: #FFAD16;
+  background: #ffad16;
 
   box-shadow:
     -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
 
-  color: #FFF;
+  color: #fff;
 
   font-family: Pretendard, sans-serif;
   font-size: 24px;
@@ -168,11 +178,12 @@
   position: absolute;
 
   left: 18px;
-  top: 782px;
+  bottom: 22px;
 
   display: flex;
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 65px;
 
   padding: 10px;
@@ -185,12 +196,12 @@
   border: 0;
   border-radius: 15px;
 
-  background: #FFF;
+  background: #fff;
 
   box-shadow:
     -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
 
-  color: #C6C6C6;
+  color: #c6c6c6;
 
   font-family: Pretendard, sans-serif;
   font-size: 24px;
@@ -201,4 +212,55 @@
   letter-spacing: -1.44px;
 
   cursor: pointer;
+}
+
+@media (max-height: 700px) {
+  .api-error-back {
+    top: 14px;
+  }
+
+  .api-error-header {
+    top: 18px;
+  }
+
+  .api-error-title {
+    top: 96px;
+    font-size: 24px;
+  }
+
+  .api-error-info {
+    top: 165px;
+  }
+
+  .api-error-retry {
+    bottom: 91px;
+    height: 58px;
+  }
+
+  .api-error-home {
+    bottom: 23px;
+    height: 58px;
+  }
+}
+
+@media (max-width: 360px) {
+  .api-error-back {
+    left: 10px;
+  }
+
+  .api-error-title {
+    left: 18px;
+    font-size: 24px;
+  }
+
+  .api-error-info {
+    left: 18px;
+    width: calc(100% - 36px);
+  }
+
+  .api-error-retry,
+  .api-error-home {
+    left: 14px;
+    width: calc(100% - 28px);
+  }
 }

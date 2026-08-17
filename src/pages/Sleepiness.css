@@ -5,7 +5,8 @@
 
   width: 100%;
   max-width: 402px;
-  height: 874px;
+
+  height: min(100dvh, 874px);
 
   margin: 0 auto;
 
@@ -28,17 +29,17 @@
   position: absolute;
 
   left: 0;
-  top: 46px;
+  top: 0;
 
-  width: 402px;
-  height: 46px;
+  width: 100%;
+  height: 100px;
 }
 
 .sleepiness-back {
   position: absolute;
 
   left: 12px;
-  top: 7px;
+  top: clamp(18px, 6.06dvh, 53px);
 
   width: 35px;
   height: 32px;
@@ -65,7 +66,7 @@
   position: absolute;
 
   left: 50%;
-  top: 11px;
+  top: clamp(22px, 6.52dvh, 57px);
 
   margin: 0;
 
@@ -87,8 +88,8 @@
 .sleepiness-close {
   position: absolute;
 
-  left: 355px;
-  top: 8.5px;
+  right: 17px;
+  top: clamp(19.5px, 6.23dvh, 54.5px);
 
   width: 30px;
   height: 29px;
@@ -115,9 +116,10 @@
   position: absolute;
 
   left: 18px;
-  top: 140px;
+  top: clamp(112px, 16.02dvh, 140px);
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
 }
 
 .sleepiness-title-section {
@@ -158,14 +160,14 @@
 
   gap: 12px;
 
-  margin-top: 48px;
+  margin-top: clamp(34px, 5.49dvh, 48px);
 }
 
 .sleepiness-option {
   display: flex;
   align-items: center;
 
-  width: 366px;
+  width: 100%;
   height: 68px;
 
   padding: 0 20px;
@@ -253,11 +255,12 @@
   position: absolute;
 
   left: 18px;
-  top: 782px;
+  bottom: 22px;
 
   display: flex;
 
-  width: 366px;
+  width: calc(100% - 36px);
+  max-width: 366px;
   height: 65px;
 
   padding: 10px;
@@ -293,8 +296,71 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 402px) {
-  .sleepiness-page {
-    width: 100%;
+@media (max-height: 700px) {
+  .sleepiness-back {
+    top: 14px;
+  }
+
+  .sleepiness-header-title {
+    top: 18px;
+  }
+
+  .sleepiness-close {
+    top: 15.5px;
+  }
+
+  .sleepiness-content {
+    top: 102px;
+  }
+
+  .sleepiness-title {
+    font-size: 24px;
+  }
+
+  .sleepiness-description {
+    margin-top: 9px;
+    font-size: 14px;
+  }
+
+  .sleepiness-options {
+    margin-top: 28px;
+    gap: 9px;
+  }
+
+  .sleepiness-option {
+    height: 58px;
+  }
+
+  .sleepiness-submit {
+    bottom: 23px;
+    height: 58px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sleepiness-back {
+    left: 10px;
+  }
+
+  .sleepiness-close {
+    right: 10px;
+  }
+
+  .sleepiness-content {
+    left: 14px;
+    width: calc(100% - 28px);
+  }
+
+  .sleepiness-option {
+    padding: 0 16px;
+  }
+
+  .sleepiness-label {
+    font-size: 18px;
+  }
+
+  .sleepiness-submit {
+    left: 14px;
+    width: calc(100% - 28px);
   }
 }

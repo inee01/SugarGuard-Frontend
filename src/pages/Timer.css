@@ -3,20 +3,23 @@
 
   width: 100%;
   max-width: 402px;
-  height: 874px;
+  height: min(100dvh, 874px);
 
   margin: 0 auto;
 
-  background: #FFF;
+  background: #fff;
   overflow: hidden;
 }
 
+/* =========================
+   상단
+========================= */
 
 .timer-back {
   position: absolute;
 
   left: 12px;
-  top: 53px;
+  top: clamp(18px, 6.06dvh, 53px);
 
   width: 35px;
   height: 32px;
@@ -36,7 +39,6 @@
   cursor: pointer;
 }
 
-
 .timer-back svg {
   display: block;
 
@@ -44,12 +46,11 @@
   height: 32px;
 }
 
-
 .timer-header {
   position: absolute;
 
   left: 50%;
-  top: 57px;
+  top: clamp(22px, 6.52dvh, 57px);
 
   transform: translateX(-50%);
 
@@ -68,6 +69,9 @@
   white-space: nowrap;
 }
 
+/* =========================
+   874px 기준 기존 GitHub 위치
+========================= */
 
 .timer-title {
   position: absolute;
@@ -93,7 +97,6 @@
   letter-spacing: -1.56px;
 }
 
-
 .timer-activity-name {
   position: absolute;
 
@@ -108,7 +111,7 @@
 
   margin: 0;
 
-  color: rgba(120, 78, 0, 0.60);
+  color: rgba(120, 78, 0, 0.6);
 
   text-align: center;
 
@@ -123,7 +126,6 @@
   white-space: nowrap;
 }
 
-
 .timer-circle {
   position: absolute;
 
@@ -134,7 +136,6 @@
   height: 243px;
 }
 
-
 .timer-circle svg {
   display: block;
 
@@ -142,12 +143,10 @@
   height: 243px;
 }
 
-
 .timer-circle-paths {
   transform-box: view-box;
   transform-origin: 50% 50%;
 }
-
 
 .timer-circle-progress {
   transform-box: view-box;
@@ -155,7 +154,6 @@
 
   transform: rotate(-1.5deg);
 }
-
 
 .timer-time {
   position: absolute;
@@ -178,7 +176,6 @@
 
   letter-spacing: -2.4px;
 }
-
 
 .timer-remaining-label {
   position: absolute;
@@ -204,6 +201,10 @@
   letter-spacing: -0.9px;
 }
 
+/* =========================
+   밥그릇 진행 게이지
+   가로값은 JS 계산 때문에 유지
+========================= */
 
 .timer-progress-track {
   position: absolute;
@@ -214,7 +215,7 @@
   width: 309px;
   height: 11px;
 
-  background: #FFE0A8;
+  background: #ffe0a8;
 
   border-radius: 999px;
 
@@ -223,22 +224,19 @@
   z-index: 1;
 }
 
-
 .timer-progress-fill {
   width: 0;
   height: 100%;
 
-  background: #FFAD16;
+  background: #ffad16;
 
   border-radius: 999px;
 }
 
-
-/* 밥그릇 */
 .timer-progress-food {
   position: absolute;
 
-  top: 583px;
+  top: 583px !important;
 
   width: 62px;
   height: 42px;
@@ -250,8 +248,6 @@
   z-index: 4;
 }
 
-
-/* 방패 */
 .timer-progress-shield {
   position: absolute;
 
@@ -268,7 +264,6 @@
   z-index: 3;
 }
 
-
 .timer-progress-text {
   position: absolute;
 
@@ -280,7 +275,7 @@
 
   margin: 0;
 
-  color: rgba(189, 123, 0, 0.60);
+  color: rgba(189, 123, 0, 0.6);
 
   text-align: center;
 
@@ -293,12 +288,15 @@
   letter-spacing: -1.2px;
 }
 
+/* =========================
+   하단 버튼
+========================= */
 
 .timer-stop-button {
   position: absolute;
 
   left: 18px;
-  top: 782px;
+  bottom: 22px;
 
   display: flex;
 
@@ -317,14 +315,13 @@
   border: none;
   border-radius: 15px;
 
-  background: #FFF;
+  background: #fff;
 
   box-shadow:
     -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
 
   cursor: pointer;
 }
-
 
 .timer-stop-icon {
   width: 21px;
@@ -333,9 +330,8 @@
   flex-shrink: 0;
 }
 
-
 .timer-stop-text {
-  color: #C6C6C6;
+  color: #c6c6c6;
 
   text-align: center;
 
@@ -348,12 +344,11 @@
   letter-spacing: -1.44px;
 }
 
-
 .timer-pause-button {
   position: absolute;
 
-  left: 211px;
-  top: 782px;
+  right: 18px;
+  bottom: 22px;
 
   display: flex;
 
@@ -372,14 +367,13 @@
   border: none;
   border-radius: 15px;
 
-  background: #FFAD16;
+  background: #ffad16;
 
   box-shadow:
     -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
 
   cursor: pointer;
 }
-
 
 .timer-pause-icon {
   width: 18px;
@@ -388,9 +382,8 @@
   flex-shrink: 0;
 }
 
-
 .timer-pause-text {
-  color: #FFF;
+  color: #fff;
 
   text-align: center;
 
@@ -401,4 +394,125 @@
   line-height: normal;
 
   letter-spacing: -1.44px;
+}
+
+/* =========================
+   874px보다 낮은 화면
+   가운데 콘텐츠만 위로 이동
+========================= */
+
+@media (max-height: 873px) {
+  .timer-title {
+    top: 101px;
+  }
+
+  .timer-activity-name {
+    top: 142px;
+  }
+
+  .timer-circle {
+    top: 193.5px;
+  }
+
+  .timer-time {
+    top: 284px;
+  }
+
+  .timer-remaining-label {
+    top: 331px;
+  }
+
+  .timer-progress-track {
+    top: 500px;
+  }
+
+  .timer-progress-food {
+    top: 480px !important;
+  }
+
+  .timer-progress-shield {
+    top: 463px;
+  }
+
+  .timer-progress-text {
+    top: 555px;
+  }
+}
+
+/* =========================
+   아주 낮은 화면
+========================= */
+
+@media (max-height: 700px) {
+  .timer-back {
+    top: 14px;
+  }
+
+  .timer-header {
+    top: 18px;
+  }
+
+  .timer-title {
+    top: 85px;
+    font-size: 24px;
+  }
+
+  .timer-activity-name {
+    top: 123px;
+  }
+
+  .timer-circle {
+    top: 165px;
+  }
+
+  .timer-time {
+    top: 256px;
+  }
+
+  .timer-remaining-label {
+    top: 303px;
+  }
+
+  .timer-progress-track {
+    top: 445px;
+  }
+
+  .timer-progress-food {
+    top: 425px !important;
+  }
+
+  .timer-progress-shield {
+    top: 408px;
+  }
+
+  .timer-progress-text {
+    top: 498px;
+  }
+
+  .timer-stop-button,
+  .timer-pause-button {
+    bottom: 23px;
+    height: 58px;
+  }
+}
+
+@media (max-width: 360px) {
+  .timer-back {
+    left: 10px;
+  }
+
+  .timer-stop-button {
+    left: 14px;
+    width: calc((100% - 44px) / 2);
+  }
+
+  .timer-pause-button {
+    right: 14px;
+    width: calc((100% - 44px) / 2);
+  }
+
+  .timer-stop-text,
+  .timer-pause-text {
+    font-size: 21px;
+  }
 }
