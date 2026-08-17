@@ -10,7 +10,8 @@ function TimerRestore({
   const timerCirclePath =
     "M130.912 6.38408C161.067 8.84945 189.051 23.0491 208.847 45.9301C228.643 68.8112 238.67 98.5464 236.773 128.743C234.876 158.939 221.205 187.186 198.701 207.409C176.196 227.632 146.655 238.217 116.428 236.889C86.2017 235.56 57.7031 222.424 37.0598 200.304C16.4166 178.184 5.27718 148.848 6.03653 118.601C6.79588 88.3548 19.3934 59.614 41.1205 38.558C62.8477 17.5021 91.9696 5.81241 122.225 6.00228";
 
-  const totalSeconds = recommendation.durationMinutes * 60;
+  const totalSeconds =
+    recommendation.durationMinutes * 60;
 
   const progress = Math.min(
     1,
@@ -34,8 +35,12 @@ function TimerRestore({
     foodLeft + foodWidth / 2 - trackLeft
   );
 
-  const minutes = Math.floor(timerTimeLeft / 60);
-  const seconds = timerTimeLeft % 60;
+  const minutes = Math.floor(
+    timerTimeLeft / 60
+  );
+
+  const seconds =
+    timerTimeLeft % 60;
 
   return (
     <div className="timer-page">
@@ -109,6 +114,9 @@ function TimerRestore({
               strokeLinejoin="round"
               strokeDasharray="1"
               strokeDashoffset={progress}
+              style={{
+                transition: "none"
+              }}
             />
           </g>
         </svg>
@@ -137,6 +145,7 @@ function TimerRestore({
         className="timer-progress-food"
         src="/images/progress-food.png"
         alt="밥 캐릭터"
+        draggable="false"
         style={{
           top: "583px",
           left: `${foodLeft}px`,
@@ -148,6 +157,7 @@ function TimerRestore({
         className="timer-progress-shield"
         src="/images/shield.png"
         alt="방패"
+        draggable="false"
       />
 
       <p className="timer-progress-text">

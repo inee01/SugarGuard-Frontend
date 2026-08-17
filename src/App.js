@@ -20,7 +20,7 @@ import {
 } from "./data/mockRecommendation";
 
 function App() {
-  const [page, setPage] = useState("complete");
+  const [page, setPage] = useState("home");
   const [recommendationData, setRecommendationData] = useState(null);
   const [homeData, setHomeData] = useState(null);
   const [distanceKm, setDistanceKm] = useState(0);
@@ -250,9 +250,7 @@ function App() {
             String(recordId)
           );
 
-          setTimerTimeLeft(
-            recommendationData.recommendation.durationMinutes * 60
-          );
+          setTimerTimeLeft(20);
 
           setPage("timer");
         }}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./SleepinessResult.css";
 
 const API_BASE_URL = "http://localhost:8080";
@@ -43,12 +43,14 @@ function SleepinessFace({ value }) {
               strokeWidth="2.4"
               strokeLinecap="round"
             />
+
             <path
               d="M10.5 17.5C10.5 21.09 13.41 24 17 24C20.59 24 23.5 21.09 23.5 17.5"
               stroke={iconColor}
               strokeWidth="2.4"
               strokeLinecap="round"
             />
+
             <path
               d="M12.5 17H21.5"
               stroke={iconColor}
@@ -66,12 +68,14 @@ function SleepinessFace({ value }) {
               r="1.5"
               fill={iconColor}
             />
+
             <circle
               cx="21.5"
               cy="14"
               r="1.5"
               fill={iconColor}
             />
+
             <path
               d="M11 19C12.5 21 14.5 22 17 22C19.5 22 21.5 21 23 19"
               stroke={iconColor}
@@ -89,12 +93,14 @@ function SleepinessFace({ value }) {
               r="1.5"
               fill={iconColor}
             />
+
             <circle
               cx="21.5"
               cy="14"
               r="1.5"
               fill={iconColor}
             />
+
             <path
               d="M12 20H22"
               stroke={iconColor}
@@ -112,12 +118,14 @@ function SleepinessFace({ value }) {
               r="1.5"
               fill={iconColor}
             />
+
             <circle
               cx="21.5"
               cy="14"
               r="1.5"
               fill={iconColor}
             />
+
             <path
               d="M11 20C12.5 18.5 14.5 18 17 18C19.5 18 21.5 18.5 23 20"
               stroke={iconColor}
@@ -135,24 +143,28 @@ function SleepinessFace({ value }) {
               r="1.5"
               fill={iconColor}
             />
+
             <circle
               cx="21.5"
               cy="14"
               r="1.5"
               fill={iconColor}
             />
+
             <path
               d="M11 20C12.5 18.5 14.5 18 17 18C19.5 18 21.5 18.5 23 20"
               stroke={iconColor}
               strokeWidth="2"
               strokeLinecap="round"
             />
+
             <path
               d="M23.5 8L27 5.5"
               stroke={iconColor}
               strokeWidth="1.8"
               strokeLinecap="round"
             />
+
             <path
               d="M25 11L29 9"
               stroke={iconColor}
@@ -174,9 +186,22 @@ function SleepinessResult({
   const [generatedText, setGeneratedText] = useState("");
   const [isLoadingMessage, setIsLoadingMessage] = useState(true);
 
+  const lastRequestKeyRef = useRef(null);
+
   useEffect(() => {
+    const requestKey =
+      `${result.recordId}-${activityType}-${result.difference}`;
+
+    if (lastRequestKeyRef.current === requestKey) {
+      return;
+    }
+
+    lastRequestKeyRef.current = requestKey;
+
     const fetchGeneratedMessage = async () => {
       try {
+        setIsLoadingMessage(true);
+
         const response = await fetch(
           `${API_BASE_URL}/api/v1/llm/generate-message`,
           {
@@ -196,15 +221,26 @@ function SleepinessResult({
 
         if (!response.ok) {
           throw new Error(
-            data.message || "맞춤 문구 생성에 실패했습니다."
+            data.message ||
+              "맞춤 문구 생성에 실패했습니다."
           );
         }
 
-        console.log("LLM 결과 문구 생성 성공:", data);
+        console.log(
+          "LLM 결과 문구 생성 성공:",
+          data
+        );
 
-        setGeneratedText(data.generatedText);
+        setGeneratedText(
+          data.generatedText ||
+            result.message ||
+            "15분 활동을 완료했어요. 오늘도 잘 해냈어요!"
+        );
       } catch (error) {
-        console.error("LLM 결과 문구 생성 실패:", error);
+        console.error(
+          "LLM 결과 문구 생성 실패:",
+          error
+        );
 
         setGeneratedText(
           result.message ||
@@ -216,12 +252,16 @@ function SleepinessResult({
     };
 
     fetchGeneratedMessage();
-  }, [activityType, result]);
+  }, [
+    activityType,
+    result.recordId,
+    result.difference,
+    result.message
+  ]);
 
   return (
     <div className="sleepiness-result-page">
       <header className="sleepiness-result-header">
-
         <h1 className="sleepiness-result-header-title">
           활동 결과
         </h1>

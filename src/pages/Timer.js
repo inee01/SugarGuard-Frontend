@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import "./Timer.css";
+
+const TIMER_END_TIME_KEY = "sugarguardTimerEndTime";
 
 function Timer({
   recommendation,
   timerTimeLeft,
   setTimerTimeLeft,
-  distanceKm,
   onDistanceUpdate,
   onComplete,
   onStop,
@@ -15,8 +16,10 @@ function Timer({
   const timerCirclePath =
     "M130.912 6.38408C161.067 8.84945 189.051 23.0491 208.847 45.9301C228.643 68.8112 238.67 98.5464 236.773 128.743C234.876 158.939 221.205 187.186 198.701 207.409C176.196 227.632 146.655 238.217 116.428 236.889C86.2017 235.56 57.7031 222.424 37.0598 200.304C16.4166 178.184 5.27718 148.848 6.03653 118.601C6.79588 88.3548 19.3934 59.614 41.1205 38.558C62.8477 17.5021 91.9696 5.81241 122.225 6.00228";
 
-  const [lastCoords, setLastCoords] = useState(null);
   const watchIdRef = useRef(null);
+  const lastCoordsRef = useRef(null);
+  const endTimeRef = useRef(null);
+  const completedRef = useRef(false);
 
   const totalSeconds =
     recommendation.durationMinutes * 60;
@@ -25,8 +28,7 @@ function Timer({
     1,
     Math.max(
       0,
-      (totalSeconds - timerTimeLeft) /
-        totalSeconds
+      (totalSeconds - timerTimeLeft) / totalSeconds
     )
   );
 
@@ -37,8 +39,7 @@ function Timer({
 
   const foodLeft =
     foodStartLeft +
-    (foodEndLeft - foodStartLeft) *
-      progress;
+    (foodEndLeft - foodStartLeft) * progress;
 
   const fillWidth = Math.max(
     0,
@@ -95,8 +96,21 @@ function Timer({
     const handlePosition = (position) => {
       const {
         latitude,
-        longitude
+        longitude,
+        accuracy
       } = position.coords;
+
+      if (accuracy > 150) {
+        console.warn(
+          `GPS 정확도가 낮아 위치를 무시합니다: ${Math.round(
+            accuracy
+          )}m`
+        );
+        return;
+      }
+
+      const lastCoords =
+        lastCoordsRef.current;
 
       if (lastCoords) {
         const distance = calculateDistance(
@@ -107,8 +121,8 @@ function Timer({
         );
 
         if (
-          distance < 0.1 &&
-          distance > 0.00001
+          distance >= 0.01 &&
+          distance < 0.1
         ) {
           onDistanceUpdate(
             (prev) => prev + distance
@@ -116,14 +130,24 @@ function Timer({
         }
       }
 
-      setLastCoords({
+      lastCoordsRef.current = {
         lat: latitude,
         lon: longitude
-      });
+      };
     };
 
     const handleError = (error) => {
-      console.warn("GPS 오류:", error);
+      if (error.code === 3) {
+        console.warn(
+          "GPS 위치 확인 시간이 초과되었습니다."
+        );
+        return;
+      }
+
+      console.warn(
+        "GPS 오류:",
+        error
+      );
     };
 
     watchIdRef.current =
@@ -132,8 +156,8 @@ function Timer({
         handleError,
         {
           enableHighAccuracy: true,
-          maximumAge: 0,
-          timeout: 5000
+          maximumAge: 5000,
+          timeout: 10000
         }
       );
 
@@ -142,44 +166,183 @@ function Timer({
         navigator.geolocation.clearWatch(
           watchIdRef.current
         );
+
+        watchIdRef.current = null;
       }
     };
   }, [
     recommendation.activityType,
-    lastCoords,
     onDistanceUpdate
   ]);
 
   useEffect(() => {
     if (timerTimeLeft <= 0) {
-      if (watchIdRef.current !== null) {
-        navigator.geolocation.clearWatch(
-          watchIdRef.current
-        );
-      }
-
-      onComplete();
       return;
     }
 
-    const timer = setInterval(() => {
-      setTimerTimeLeft((prevTime) =>
-        Math.max(0, prevTime - 1)
-      );
-    }, 1000);
+    const now = Date.now();
 
-    return () => clearInterval(timer);
+    const savedEndTime = Number(
+      localStorage.getItem(
+        TIMER_END_TIME_KEY
+      )
+    );
+
+    let endTime;
+
+    if (
+      Number.isFinite(savedEndTime) &&
+      savedEndTime > now
+    ) {
+      endTime = savedEndTime;
+    } else {
+      endTime =
+        now + timerTimeLeft * 1000;
+
+      localStorage.setItem(
+        TIMER_END_TIME_KEY,
+        String(endTime)
+      );
+    }
+
+    endTimeRef.current = endTime;
+
+    const syncTimer = () => {
+      if (!endTimeRef.current) {
+        return;
+      }
+
+      const remaining = Math.max(
+        0,
+        Math.ceil(
+          (
+            endTimeRef.current -
+            Date.now()
+          ) / 1000
+        )
+      );
+
+      setTimerTimeLeft(
+        (prev) =>
+          prev === remaining
+            ? prev
+            : remaining
+      );
+    };
+
+    syncTimer();
+
+    const timer = setInterval(
+      syncTimer,
+      250
+    );
+
+    const handleVisibilityChange =
+      () => {
+        if (
+          document.visibilityState ===
+          "visible"
+        ) {
+          syncTimer();
+        }
+      };
+
+    const handleFocus = () => {
+      syncTimer();
+    };
+
+    document.addEventListener(
+      "visibilitychange",
+      handleVisibilityChange
+    );
+
+    window.addEventListener(
+      "focus",
+      handleFocus
+    );
+
+    return () => {
+      clearInterval(timer);
+
+      document.removeEventListener(
+        "visibilitychange",
+        handleVisibilityChange
+      );
+
+      window.removeEventListener(
+        "focus",
+        handleFocus
+      );
+    };
+  }, [
+    setTimerTimeLeft,
+    totalSeconds
+  ]);
+
+  useEffect(() => {
+    if (
+      timerTimeLeft > 0 ||
+      completedRef.current
+    ) {
+      return;
+    }
+
+    completedRef.current = true;
+
+    localStorage.removeItem(
+      TIMER_END_TIME_KEY
+    );
+
+    if (watchIdRef.current !== null) {
+      navigator.geolocation.clearWatch(
+        watchIdRef.current
+      );
+
+      watchIdRef.current = null;
+    }
+
+    onComplete();
   }, [
     timerTimeLeft,
-    onComplete,
-    setTimerTimeLeft
+    onComplete
   ]);
+
+  const handleStop = () => {
+    localStorage.removeItem(
+      TIMER_END_TIME_KEY
+    );
+
+    endTimeRef.current = null;
+
+    onStop();
+  };
+
+  const handleBack = () => {
+    localStorage.removeItem(
+      TIMER_END_TIME_KEY
+    );
+
+    endTimeRef.current = null;
+
+    onBack();
+  };
+
+  const handlePause = () => {
+    localStorage.removeItem(
+      TIMER_END_TIME_KEY
+    );
+
+    endTimeRef.current = null;
+
+    onPause();
+  };
 
   const minutes = Math.floor(
     timerTimeLeft / 60
   );
 
-  const seconds = timerTimeLeft % 60;
+  const seconds =
+    timerTimeLeft % 60;
 
   return (
     <div className="timer-page">
@@ -187,7 +350,7 @@ function Timer({
         type="button"
         className="timer-back"
         aria-label="뒤로가기"
-        onClick={onBack}
+        onClick={handleBack}
       >
         <svg
           width="35"
@@ -277,8 +440,7 @@ function Timer({
           style={{
             width: `${fillWidth}px`,
             transition:
-              "width 1.15s linear",
-            willChange: "width"
+              "width 1.15s linear"
           }}
         />
       </div>
@@ -308,7 +470,7 @@ function Timer({
       <button
         type="button"
         className="timer-stop-button"
-        onClick={onStop}
+        onClick={handleStop}
       >
         <svg
           className="timer-stop-icon"
@@ -332,7 +494,7 @@ function Timer({
       <button
         type="button"
         className="timer-pause-button"
-        onClick={onPause}
+        onClick={handlePause}
       >
         <svg
           className="timer-pause-icon"
