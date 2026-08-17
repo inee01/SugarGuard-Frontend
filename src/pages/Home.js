@@ -38,7 +38,7 @@ function Home({ onStart, homeData }) {
 
           <img
             className="meal-image"
-            src="/images/rice-character.png"
+            src="/images/16.png"
             alt="밥 캐릭터"
           />
         </div>

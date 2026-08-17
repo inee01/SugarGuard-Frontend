@@ -1,9 +1,9 @@
 import "./LocationPermission.css";
 
-function LocationPermission({ 
-  onLocationSuccess, 
-  onDenied, 
-  onBack, 
+function LocationPermission({
+  onLocationSuccess,
+  onDenied,
+  onBack,
   onLoading
 }) {
   const handleLocationPermission = () => {
@@ -28,8 +28,6 @@ function LocationPermission({
 
   return (
     <div className="location-page">
-
-      {/* 뒤로가기 */}
       <button
         type="button"
         className="location-back"
@@ -53,12 +51,10 @@ function LocationPermission({
         </svg>
       </button>
 
-      {/* 상단 제목 */}
       <div className="location-header">
         위치 권한 요청
       </div>
 
-      {/* 가운데 위치 핀 */}
       <div className="location-pin">
         <svg
           width="35"
@@ -81,17 +77,14 @@ function LocationPermission({
         </svg>
       </div>
 
-      {/* 메인 제목 */}
       <h1 className="location-title">
         현재 위치 확인
       </h1>
 
-      {/* 설명 */}
       <p className="location-description">
         주변 환경을 분석해 맞춤 활동을 추천합니다.
       </p>
 
-      {/* 위치 정보 안내 박스 */}
       <div className="location-info">
         <div className="location-info-title">
           위치 정보 사용 안내
@@ -104,7 +97,6 @@ function LocationPermission({
         </div>
       </div>
 
-      {/* 위치 권한 허용 */}
       <button
         className="location-allow"
         onClick={handleLocationPermission}
@@ -112,14 +104,12 @@ function LocationPermission({
         위치 권한 허용
       </button>
 
-      {/* 건너뛰기 */}
       <button
         className="location-skip"
         onClick={onDenied}
       >
         건너뛰기
       </button>
-
     </div>
   );
 }

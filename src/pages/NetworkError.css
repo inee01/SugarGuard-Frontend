@@ -15,12 +15,10 @@
   box-sizing: border-box;
 }
 
-
-/* 뒤로가기 */
-
 .network-error-back {
   position: absolute;
-  left: 0.5px;
+
+  left: 12px;
   top: 53px;
 
   width: 35px;
@@ -32,15 +30,14 @@
   border: 0;
   background: transparent;
 
+  opacity: 0.7;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
   cursor: pointer;
 }
-
-
-/* 네트워크 오류 안내 */
 
 .network-error-header {
   position: absolute;
@@ -52,18 +49,17 @@
   height: 24px;
 
   color: #624001;
+
   font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
   letter-spacing: -1.2px;
 
   white-space: nowrap;
 }
-
-
-/* 와이파이 아이콘 */
 
 .network-error-icon {
   position: absolute;
@@ -77,9 +73,6 @@
   fill: #624001;
 }
 
-
-/* 연결 확인 중 */
-
 .network-error-title {
   position: absolute;
 
@@ -92,6 +85,7 @@
   margin: 0;
 
   color: #624001;
+
   font-family: Pretendard;
   font-size: 26px;
   font-style: normal;
@@ -100,9 +94,6 @@
 
   white-space: nowrap;
 }
-
-
-/* 설명 */
 
 .network-error-description {
   position: absolute;
@@ -116,6 +107,7 @@
   margin: 0;
 
   color: rgba(120, 78, 0, 0.60);
+
   text-align: center;
 
   font-family: Pretendard;
@@ -124,9 +116,6 @@
   font-weight: 400;
   line-height: normal;
 }
-
-
-/* 다시 시도 */
 
 .network-error-retry {
   position: absolute;
@@ -166,9 +155,6 @@
 
   cursor: pointer;
 }
-
-
-/* 홈으로 */
 
 .network-error-home {
   position: absolute;

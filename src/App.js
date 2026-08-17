@@ -10,6 +10,9 @@ import NetworkError from "./pages/NetworkError";
 import Recommendation from "./pages/Recommendation";
 import Timer from "./pages/Timer";
 import TimerRestore from "./pages/TimerRestore";
+import BeforeSleepiness from "./pages/BeforeSleepiness";
+import AfterSleepiness from "./pages/AfterSleepiness";
+import SleepinessResult from "./pages/SleepinessResult";
 
 import {
   mockIndoorRecommendation,
@@ -17,14 +20,17 @@ import {
 } from "./data/mockRecommendation";
 
 function App() {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState("complete");
   const [recommendationData, setRecommendationData] = useState(null);
   const [homeData, setHomeData] = useState(null);
   const [distanceKm, setDistanceKm] = useState(0);
   const [isRecommendationReady, setIsRecommendationReady] = useState(false);
   const [timerTimeLeft, setTimerTimeLeft] = useState(null);
+  const [sleepinessRecordId, setSleepinessRecordId] = useState(null);
+  const [sleepinessResult, setSleepinessResult] = useState(null);
+  const [isLocationDenied, setIsLocationDenied] = useState(false);
+  const [lastCoords, setLastCoords] = useState(null);
 
-  // 홈 화면 상태 조회
   const fetchHomeData = async () => {
     try {
       const response = await fetch(
@@ -49,47 +55,7 @@ function App() {
     fetchHomeData();
   }, []);
 
-  // 활동 완료 기록 저장
-  const handleActivityComplete = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost:8080/api/v1/records",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            activityType:
-              recommendationData.recommendation.activityType,
-            durationMinutes:
-              recommendationData.recommendation.durationMinutes,
-            distanceKm: distanceKm
-          })
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP 오류: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      console.log("활동 완료 저장:", data);
-
-      // 저장 후 홈 상태 다시 조회
-      await fetchHomeData();
-
-      setPage("complete");
-    } catch (error) {
-      console.error("활동 완료 저장 실패:", error);
-    }
-  };
-
-  // 위치 허용 성공 → 실제 추천 API 호출
-  const handleLocationSuccess = async (coords) => {
-    console.log("저장된 위치:", coords);
-
+  const requestRecommendation = async (coords) => {
     try {
       const response = await fetch(
         "http://localhost:8080/api/v1/recommendations",
@@ -123,7 +89,62 @@ function App() {
     }
   };
 
+  const handleLocationSuccess = async (coords) => {
+    setIsLocationDenied(false);
+    setLastCoords(coords);
 
+    console.log("저장된 위치:", coords);
+
+    await requestRecommendation(coords);
+  };
+
+  const handleRecommendationRetry = async () => {
+    if (!lastCoords) {
+      setPage("location");
+      return;
+    }
+
+    setRecommendationData(null);
+    setIsRecommendationReady(false);
+    setPage("environmentLoading");
+
+    await requestRecommendation(lastCoords);
+  };
+
+  const handleActivityComplete = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8080/api/v1/records",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            activityType:
+              recommendationData.recommendation.activityType,
+            durationMinutes:
+              recommendationData.recommendation.durationMinutes,
+            distanceKm
+          })
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP 오류: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      console.log("활동 완료 저장:", data);
+
+      await fetchHomeData();
+
+      setPage("afterSleepiness");
+    } catch (error) {
+      console.error("활동 완료 저장 실패:", error);
+    }
+  };
 
   if (page === "location") {
     return (
@@ -141,7 +162,10 @@ function App() {
   }
 
   if (page === "timerRestore") {
-    if (!recommendationData?.recommendation || timerTimeLeft === null) {
+    if (
+      !recommendationData?.recommendation ||
+      timerTimeLeft === null
+    ) {
       setPage("home");
       return null;
     }
@@ -151,8 +175,7 @@ function App() {
         recommendation={recommendationData.recommendation}
         timerTimeLeft={timerTimeLeft}
         onStop={() => setPage("home")}
-        onClose={() => setPage("home")}
-        onBack={() => setPage("location")}
+        onBack={() => setPage("timer")}
         onResume={() => setPage("timer")}
       />
     );
@@ -161,7 +184,9 @@ function App() {
   if (page === "locationDenied") {
     return (
       <LocationDenied
+        onBack={() => setPage("location")}
         onIndoorRecommendation={() => {
+          setIsLocationDenied(true);
           setRecommendationData(mockIndoorRecommendation);
           setPage("recommendation");
         }}
@@ -173,6 +198,7 @@ function App() {
     return (
       <EnvironmentLoading
         onBack={() => setPage("location")}
+        onHome={() => setPage("home")}
         isApiDone={isRecommendationReady}
         onComplete={() => setPage("recommendation")}
       />
@@ -182,7 +208,7 @@ function App() {
   if (page === "networkError") {
     return (
       <NetworkError
-        onRetry={() => setPage("environmentLoading")}
+        onRetry={handleRecommendationRetry}
         onHome={() => setPage("home")}
       />
     );
@@ -191,7 +217,7 @@ function App() {
   if (page === "apiError") {
     return (
       <ApiError
-        onRetry={() => setPage("environmentLoading")}
+        onRetry={handleRecommendationRetry}
         onHome={() => setPage("home")}
       />
     );
@@ -201,13 +227,33 @@ function App() {
     return (
       <Recommendation
         data={recommendationData}
+        showEnvironment={!isLocationDenied}
         onBack={() => setPage("location")}
         onClose={() => setPage("home")}
         onStart={() => {
           setDistanceKm(0);
+          setPage("beforeSleepiness");
+        }}
+      />
+    );
+  }
+
+  if (page === "beforeSleepiness") {
+    return (
+      <BeforeSleepiness
+        onBack={() => setPage("recommendation")}
+        onComplete={(recordId) => {
+          setSleepinessRecordId(recordId);
+
+          localStorage.setItem(
+            "sleepinessRecordId",
+            String(recordId)
+          );
+
           setTimerTimeLeft(
             recommendationData.recommendation.durationMinutes * 60
           );
+
           setPage("timer");
         }}
       />
@@ -215,37 +261,83 @@ function App() {
   }
 
   if (page === "timer") {
-  if (!recommendationData?.recommendation || timerTimeLeft === null) {
-    setPage("home");
-    return null;
+    if (
+      !recommendationData?.recommendation ||
+      timerTimeLeft === null
+    ) {
+      setPage("home");
+      return null;
+    }
+
+    return (
+      <Timer
+        recommendation={recommendationData.recommendation}
+        timerTimeLeft={timerTimeLeft}
+        setTimerTimeLeft={setTimerTimeLeft}
+        distanceKm={distanceKm}
+        onDistanceUpdate={setDistanceKm}
+        onComplete={handleActivityComplete}
+        onStop={() => setPage("home")}
+        onBack={() => setPage("location")}
+        onPause={() => setPage("timerRestore")}
+      />
+    );
   }
 
-  return (
-    <Timer
-      recommendation={recommendationData.recommendation}
-      timerTimeLeft={timerTimeLeft}
-      setTimerTimeLeft={setTimerTimeLeft}
-      distanceKm={distanceKm}
-      onDistanceUpdate={setDistanceKm}
-      onComplete={handleActivityComplete}
-      onStop={() => setPage("home")}
-      onClose={() => setPage("home")}
-      onBack={() => setPage("location")}
-      onPause={() => setPage("timerRestore")}
-    />
-  );
-}
+  if (page === "afterSleepiness") {
+    return (
+      <AfterSleepiness
+        recordId={
+          sleepinessRecordId ??
+          Number(
+            localStorage.getItem("sleepinessRecordId")
+          )
+        }
+        onComplete={(result) => {
+          setSleepinessResult(result);
+          setPage("sleepinessResult");
+        }}
+      />
+    );
+  }
+
+  if (page === "sleepinessResult") {
+    if (
+      !sleepinessResult ||
+      !recommendationData?.recommendation
+    ) {
+      setPage("home");
+      return null;
+    }
+
+    return (
+      <SleepinessResult
+        result={sleepinessResult}
+        activityType={
+          recommendationData.recommendation.activityType
+        }
+        onComplete={() => setPage("complete")}
+      />
+    );
+  }
 
   if (page === "complete") {
     return (
       <Complete
         recommendation={
-        recommendationData?.recommendation ??
-        mockOutdoorRecommendation.recommendation
-      }
-      distanceKm={distanceKm}
-      homeData={homeData}
-      onHome={() => setPage("home")}
+          recommendationData?.recommendation ??
+          mockOutdoorRecommendation.recommendation
+        }
+        distanceKm={distanceKm}
+        homeData={homeData}
+        onHome={() => {
+          localStorage.removeItem("sleepinessRecordId");
+          setSleepinessRecordId(null);
+          setSleepinessResult(null);
+          setTimerTimeLeft(null);
+          setDistanceKm(0);
+          setPage("home");
+        }}
       />
     );
   }

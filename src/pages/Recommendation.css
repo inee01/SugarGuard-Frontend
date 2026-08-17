@@ -21,7 +21,7 @@
 
 .recommendation-back {
   position: absolute;
-  left: 0.5px;
+  left: 12px;
   top: 7px;
   width: 35px;
   height: 32px;
@@ -41,7 +41,7 @@
 
 .recommendation-close {
   position: absolute;
-  left: 367.5px;
+  left: 355px;
   top: 8.5px;
   width: 30px;
   height: 29px;
@@ -145,6 +145,10 @@
   font-weight: 700;
   line-height: normal;
   letter-spacing: -1.44px;
+}
+
+.recommendation-main-title.no-environment {
+  margin-top: 12;
 }
 
 .recommendation-activity-card {
@@ -276,29 +280,100 @@
   letter-spacing: -0.84px;
 }
 
+.recommendation-actions {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 402px;
+  height: 874px;
+
+  pointer-events: none;
+}
+
 .recommendation-start-button {
   position: absolute;
+
   left: 18px;
-  top: 782px;
+  top: 707px;
+
   display: flex;
+
   width: 366px;
   height: 65px;
-  padding: 10px;
+
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border: 0;
+
+  padding: 0;
+
+  border: none;
   border-radius: 15px;
+
   background: #ffad16;
-  box-shadow: -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+
+  box-shadow:
+    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+
   color: #fff;
-  font-family: Pretendard;
+
+  font-family: Pretendard, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
   letter-spacing: -1.44px;
+
   cursor: pointer;
+  pointer-events: auto;
+}
+
+.recommendation-reject-button {
+  position: absolute;
+
+  left: 18px;
+  top: 782px;
+
+  display: flex;
+
+  width: 366px;
+  height: 65px;
+
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: #fff;
+
+  box-shadow:
+    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+
+  color: #c6c6c6;
+
+  font-family: Pretendard, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  letter-spacing: -1.44px;
+
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.recommendation-start-button:disabled,
+.recommendation-reject-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .recommendation-location-map {

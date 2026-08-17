@@ -17,11 +17,6 @@ body {
   font-family: Pretendard, sans-serif;
 }
 
-/* =========================
-   전체 홈 화면
-   Figma 기준: 402 x 898
-========================= */
-
 .home-page {
   position: relative;
 
@@ -38,24 +33,14 @@ body {
   overflow: hidden;
 }
 
-/*
-  header / main은 좌표 기준을 따로 만들지 않음.
-  안쪽 absolute 요소들이 home-page를 기준으로 움직이게 함.
-*/
-
 .home-header,
 .home-main {
   position: static;
 }
 
-/* =========================
-   SugarGuard
-   X 16 / Y 45 / W 130 / H 35
-========================= */
-
 .home-logo {
   position: absolute;
-  left: 16px;
+  left: 18px;
   top: 45px;
 
   width: 130px;
@@ -72,11 +57,6 @@ body {
   line-height: normal;
   letter-spacing: -1.44px;
 }
-
-/* =========================
-   첫 도전 배지
-   X 289 / Y 45 / W 85 / H 35
-========================= */
 
 .challenge-badge {
   position: absolute;
@@ -113,11 +93,6 @@ body {
   color: #bd7b00;
 }
 
-/* =========================
-   식사하셨나요?
-   X 104 / Y 153 / W 194 / H 43
-========================= */
-
 .home-intro {
   position: static;
 }
@@ -143,11 +118,6 @@ body {
   letter-spacing: -2.16px;
 }
 
-/* =========================
-   설명 문구
-   X 146 / Y 206 / W 111 / H 38
-========================= */
-
 .home-description {
   position: absolute;
   left: 146px;
@@ -169,18 +139,9 @@ body {
   letter-spacing: -0.96px;
 }
 
-/* =========================
-   밥 캐릭터 영역
-========================= */
-
 .meal-visual {
   position: static;
 }
-
-/*
-  그라데이션
-  X 71 / Y 287 / W 259 / H 259
-*/
 
 .meal-gradient {
   position: absolute;
@@ -201,11 +162,6 @@ body {
   filter: blur(16.5px);
 }
 
-/*
-  밥 이미지
-  X 38 / Y 320 / W 327 / H 184
-*/
-
 .meal-image {
   position: absolute;
   left: 38px;
@@ -218,11 +174,6 @@ body {
 
   aspect-ratio: 327 / 184;
 }
-
-/* =========================
-   밥 먹었어요! 버튼
-   X 18 / Y 674 / W 366 / H 65
-========================= */
 
 .start-button {
   position: absolute;
@@ -261,11 +212,6 @@ body {
   cursor: pointer;
 }
 
-/* =========================
-   오늘 0/1회 완료 카드
-   X 18 / Y 752 / W 366 / H 95
-========================= */
-
 .daily-card {
   position: absolute;
   left: 18px;
@@ -278,11 +224,6 @@ body {
 
   background: #ffefd3;
 }
-
-/*
-  텍스트 위치는 아직 XYWH를 새로 안 받았기 때문에
-  카드 내부 배치로 유지
-*/
 
 .daily-text {
   position: absolute;
@@ -302,15 +243,6 @@ body {
   line-height: normal;
   letter-spacing: -0.96px;
 }
-/* =========================
-   진행바
-   페이지 기준:
-   X 30 / Y 715 / W 343 / H 27
-
-   카드 X/Y가 18 / 664이므로
-   카드 내부:
-   left 12 / top 51
-========================= */
 
 .progress-track {
   position: absolute;
@@ -341,11 +273,6 @@ body {
 .progress-marker.progress-complete {
   width: 100%;
 }
-
-
-/* =========================
-   모바일 대응
-========================= */
 
 @media (max-width: 402px) {
   .home-page {

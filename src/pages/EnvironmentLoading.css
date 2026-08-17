@@ -1,14 +1,10 @@
-/* ============================================
-   환경 분석 중 (EnvironmentLoading)
-   Figma node 1:11 기준
-   ============================================ */
-
 .environment-loading-page {
   position: relative;
 
   width: 100%;
   max-width: 402px;
   height: 874px;
+
   margin: 0 auto;
 
   background: #fff;
@@ -17,6 +13,7 @@
 
 .environment-loading-header {
   position: absolute;
+
   left: 0;
   top: 46px;
 
@@ -26,7 +23,8 @@
 
 .environment-loading-back {
   position: absolute;
-  left: 0.5px;
+
+  left: 12px;
   top: 7px;
 
   width: 35px;
@@ -52,36 +50,51 @@
 
 .environment-loading-close {
   position: absolute;
-  left: 367.5px;
+
+  left: 355px;
   top: 8.5px;
 
   width: 30px;
   height: 29px;
 
+  padding: 0;
+  margin: 0;
+
   border: none;
   background: transparent;
-  padding: 0;
 
   opacity: 0.7;
+
+  cursor: pointer;
+}
+
+.environment-loading-close svg {
+  display: block;
+
+  width: 30px;
+  height: 29px;
 }
 
 .environment-loading-title {
   position: absolute;
-  left: 154.5px;
-  top: 11px;
 
-  width: 98px;
-  height: 24px;
+  left: 50%;
+  top: 11px;
 
   margin: 0;
 
+  transform: translateX(-50%);
+
   color: #624001;
+
   text-align: center;
+
   font-family: Pretendard, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
   letter-spacing: -1.2px;
 
   white-space: nowrap;
@@ -89,6 +102,7 @@
 
 .environment-loading-graphic {
   position: absolute;
+
   left: 79px;
   top: 131px;
 
@@ -98,6 +112,7 @@
 
 .environment-location-icon {
   position: relative;
+
   width: 243px;
   height: 243px;
 
@@ -106,34 +121,41 @@
 
 .environment-wave {
   position: absolute;
+
   left: 50%;
   top: 50%;
 
   transform: translate(-50%, -50%);
+
   border-radius: 999px;
 }
 
 .environment-wave-outer {
   width: 243px;
   height: 243px;
+
   border: 1px solid #ffc85f;
+
   background: transparent;
 }
 
 .environment-wave-mid {
   width: 177px;
   height: 177px;
+
   background: rgba(255, 197, 95, 0.2);
 }
 
 .environment-wave-inner {
   width: 117px;
   height: 117px;
+
   background: rgba(255, 184, 47, 0.28);
 }
 
 .environment-location-pin {
   position: absolute;
+
   left: 98px;
   top: 93px;
 
@@ -145,9 +167,11 @@
   0% {
     transform: scale(0.96);
   }
+
   50% {
     transform: scale(1.03);
   }
+
   100% {
     transform: scale(0.96);
   }
@@ -155,6 +179,7 @@
 
 .environment-loading-message {
   position: absolute;
+
   left: 99px;
   top: 397px;
 
@@ -164,17 +189,21 @@
   margin: 0;
 
   color: #624001;
+
   text-align: center;
+
   font-family: Pretendard, sans-serif;
   font-size: 26px;
   font-style: normal;
   font-weight: 700;
   line-height: 31px;
+
   letter-spacing: -1.56px;
 }
 
 .environment-steps {
   position: absolute;
+
   left: 18px;
   top: 518px;
 
@@ -183,6 +212,7 @@
 
   border-radius: 15px;
   border: 1px solid #ffe0a8;
+
   background: #fff;
 
   overflow: hidden;
@@ -199,12 +229,12 @@
 }
 
 .environment-step-indicator {
-  width: 25px;
-  height: 25px;
-
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 25px;
+  height: 25px;
 
   flex-shrink: 0;
 }
@@ -231,6 +261,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -241,6 +272,7 @@
   height: 25px;
 
   border-radius: 50%;
+
   background: rgba(255, 173, 22, 0.25);
 }
 
@@ -248,11 +280,13 @@
   margin-left: 10px;
 
   color: #624001;
+
   font-family: Pretendard, sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
   letter-spacing: -0.9px;
 }
 

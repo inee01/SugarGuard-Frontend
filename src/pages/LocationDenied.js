@@ -1,11 +1,12 @@
 import "./LocationDenied.css";
 
-function LocationDenied({ onIndoorRecommendation }) {
+function LocationDenied({ onIndoorRecommendation, onBack }) {
   return (
     <div className="denied-page">
       <button
         type="button"
         className="denied-back"
+        onClick={onBack}
         aria-label="뒤로가기"
       >
         <svg

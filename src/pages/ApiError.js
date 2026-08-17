@@ -4,6 +4,7 @@ function ApiError({ onRetry, onHome }) {
   return (
     <div className="api-error-page">
       <button
+        type="button"
         className="api-error-back"
         onClick={onHome}
         aria-label="뒤로가기"
@@ -16,7 +17,7 @@ function ApiError({ onRetry, onHome }) {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M21 8L13 16L21 24"
+            d="M21.875 24L13.125 16L21.875 8"
             stroke="#624001"
             strokeWidth="2"
             strokeLinecap="round"
@@ -25,7 +26,9 @@ function ApiError({ onRetry, onHome }) {
         </svg>
       </button>
 
-      <h1 className="api-error-header">API 오류 안내 화면</h1>
+      <h1 className="api-error-header">
+        API 오류 안내 화면
+      </h1>
 
       <main className="api-error-main">
         <h2 className="api-error-title">
@@ -46,6 +49,7 @@ function ApiError({ onRetry, onHome }) {
       </main>
 
       <button
+        type="button"
         className="api-error-retry"
         onClick={onRetry}
       >
@@ -53,6 +57,7 @@ function ApiError({ onRetry, onHome }) {
       </button>
 
       <button
+        type="button"
         className="api-error-home"
         onClick={onHome}
       >

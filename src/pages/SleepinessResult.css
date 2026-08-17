@@ -1,0 +1,281 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+.sleepiness-result-page {
+  position: relative;
+
+  width: 402px;
+  height: 874px;
+
+  margin: 0 auto;
+
+  background: #fff;
+  overflow: hidden;
+
+  font-family: Pretendard, sans-serif;
+  box-sizing: border-box;
+}
+
+.sleepiness-result-page *,
+.sleepiness-result-page *::before,
+.sleepiness-result-page *::after {
+  box-sizing: border-box;
+}
+
+.sleepiness-result-header {
+  position: absolute;
+
+  left: 0;
+  top: 46px;
+
+  width: 402px;
+  height: 46px;
+}
+
+.sleepiness-result-header-title {
+  position: absolute;
+
+  left: 50%;
+  top: 11px;
+
+  margin: 0;
+
+  transform: translateX(-50%);
+
+  color: #624001;
+
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+
+  letter-spacing: -1.2px;
+
+  white-space: nowrap;
+}
+
+.sleepiness-result-close {
+  position: absolute;
+
+  left: 355px;
+  top: 8.5px;
+
+  width: 30px;
+  height: 29px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  opacity: 0.7;
+
+  cursor: pointer;
+}
+
+.sleepiness-result-close svg {
+  display: block;
+
+  width: 30px;
+  height: 29px;
+}
+
+.sleepiness-result-content {
+  position: absolute;
+
+  left: 18px;
+  top: 145px;
+
+  width: 366px;
+}
+
+.sleepiness-result-title {
+  margin: 0;
+
+  text-align: center;
+
+  color: #624001;
+
+  font-family: Pretendard, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: normal;
+
+  letter-spacing: -1.56px;
+}
+
+.sleepiness-result-description {
+  margin: 12px 0 0;
+
+  text-align: center;
+
+  color: rgba(120, 78, 0, 0.6);
+
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+
+  letter-spacing: -0.84px;
+}
+
+.sleepiness-result-comparison {
+  display: flex;
+
+  width: 366px;
+
+  margin-top: 55px;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 22px;
+}
+
+.sleepiness-result-value-box {
+  display: flex;
+
+  width: 120px;
+  height: 120px;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 4px;
+
+  border: 1px solid #ffefd3;
+  border-radius: 15px;
+
+  background: #fff8eb;
+}
+
+.sleepiness-result-label {
+  color: rgba(120, 78, 0, 0.6);
+
+  font-family: Pretendard, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+
+  letter-spacing: -0.72px;
+}
+
+.sleepiness-result-value {
+  margin-top: 2px;
+
+  color: #ffad16;
+
+  font-family: Pretendard, sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sleepiness-result-face {
+  display: flex;
+
+  width: 34px;
+  height: 34px;
+
+  margin-top: 4px;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.sleepiness-result-face svg {
+  display: block;
+
+  width: 34px;
+  height: 34px;
+}
+
+.sleepiness-result-arrow {
+  color: rgba(98, 64, 1, 0.65);
+
+  font-family: Pretendard, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.sleepiness-result-difference {
+  margin-top: 35px;
+
+  text-align: center;
+
+  color: #624001;
+
+  font-family: Pretendard, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: normal;
+
+  letter-spacing: -1.32px;
+}
+
+.sleepiness-result-message-box {
+  display: flex;
+
+  width: 366px;
+  min-height: 58px;
+
+  margin-top: 30px;
+  padding: 20px;
+
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #ffefd3;
+  border-radius: 15px;
+
+  background: #fff;
+
+  color: rgba(120, 78, 0, 0.72);
+
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+
+  letter-spacing: -0.84px;
+
+  text-align: center;
+}
+
+.sleepiness-result-home {
+  position: absolute;
+
+  left: 18px;
+  top: 782px;
+
+  display: flex;
+
+  width: 366px;
+  height: 65px;
+
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+
+  border: 0;
+  border-radius: 15px;
+
+  background: #ffad16;
+
+  box-shadow:
+    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+
+  color: #fff;
+
+  font-family: Pretendard, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+
+  letter-spacing: -1.44px;
+
+  cursor: pointer;
+}

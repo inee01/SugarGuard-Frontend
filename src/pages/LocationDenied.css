@@ -18,13 +18,10 @@
   box-sizing: border-box;
 }
 
-
-/* 뒤로가기 */
-
 .denied-back {
   position: absolute;
 
-  left: 0.5px;
+  left: 12px;
   top: 53px;
 
   width: 35px;
@@ -33,18 +30,20 @@
   padding: 0;
   margin: 0;
 
-  border: 0;
+  border: none;
   background: transparent;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  opacity: 0.7;
 
   cursor: pointer;
 }
 
+.denied-back svg {
+  display: block;
 
-/* 상단 - 위치 권한 거부 안내 */
+  width: 35px;
+  height: 32px;
+}
 
 .denied-header {
   position: absolute;
@@ -65,9 +64,6 @@
   white-space: nowrap;
 }
 
-
-/* 위치 정보를 가져오지 못했어요 */
-
 .denied-title {
   position: absolute;
 
@@ -84,9 +80,6 @@
   font-weight: 700;
   line-height: normal;
 }
-
-
-/* 괜찮아요... */
 
 .denied-description {
   position: absolute;
@@ -106,9 +99,6 @@
 
   white-space: nowrap;
 }
-
-
-/* 첫 번째 안내 박스 */
 
 .denied-info-box {
   position: absolute;
@@ -136,9 +126,6 @@
   background: #FAFAFA;
 }
 
-
-/* 첫 번째 안내 박스 텍스트 */
-
 .denied-info-text {
   align-self: stretch;
 
@@ -152,9 +139,6 @@
   font-weight: 400;
   line-height: normal;
 }
-
-
-/* 나중에 위치를 허용하려면 */
 
 .denied-method-title {
   position: absolute;
@@ -174,9 +158,6 @@
 
   white-space: nowrap;
 }
-
-
-/* 두 번째 안내 박스 */
 
 .denied-method-box {
   position: absolute;
@@ -204,9 +185,6 @@
   background: #F9FAFB;
 }
 
-
-/* ① ② ③ 안내 */
-
 .denied-method-text {
   margin: 0;
 
@@ -218,9 +196,6 @@
   font-weight: 400;
   line-height: normal;
 }
-
-
-/* 확인 버튼 */
 
 .denied-confirm {
   position: absolute;

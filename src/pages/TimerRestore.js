@@ -5,24 +5,33 @@ function TimerRestore({
   timerTimeLeft,
   onStop,
   onBack,
-  onClose,
   onResume
 }) {
   const timerCirclePath =
     "M130.912 6.38408C161.067 8.84945 189.051 23.0491 208.847 45.9301C228.643 68.8112 238.67 98.5464 236.773 128.743C234.876 158.939 221.205 187.186 198.701 207.409C176.196 227.632 146.655 238.217 116.428 236.889C86.2017 235.56 57.7031 222.424 37.0598 200.304C16.4166 178.184 5.27718 148.848 6.03653 118.601C6.79588 88.3548 19.3934 59.614 41.1205 38.558C62.8477 17.5021 91.9696 5.81241 122.225 6.00228";
 
   const totalSeconds = recommendation.durationMinutes * 60;
+
   const progress = Math.min(
     1,
-    Math.max(0, (totalSeconds - timerTimeLeft) / totalSeconds)
+    Math.max(
+      0,
+      (totalSeconds - timerTimeLeft) / totalSeconds
+    )
   );
+
   const trackLeft = 47;
-  const trackWidth = 309;
-  const foodWidth = 58;
-  const shieldLeft = 283;
-  const foodLeft = Math.min(
-    Math.max(trackLeft - foodWidth / 2, trackLeft + trackWidth * progress - foodWidth / 2),
-    shieldLeft - foodWidth
+  const foodWidth = 62;
+  const foodStartLeft = 16;
+  const foodEndLeft = 271.5;
+
+  const foodLeft =
+    foodStartLeft +
+    (foodEndLeft - foodStartLeft) * progress;
+
+  const fillWidth = Math.max(
+    0,
+    foodLeft + foodWidth / 2 - trackLeft
   );
 
   const minutes = Math.floor(timerTimeLeft / 60);
@@ -30,7 +39,12 @@ function TimerRestore({
 
   return (
     <div className="timer-page">
-      <button className="timer-back" aria-label="뒤로가기" onClick={onBack}>
+      <button
+        type="button"
+        className="timer-back"
+        aria-label="뒤로가기"
+        onClick={onBack}
+      >
         <svg
           width="35"
           height="32"
@@ -48,29 +62,17 @@ function TimerRestore({
         </svg>
       </button>
 
-      <h1 className="timer-header">혈당 방어 중</h1>
+      <h1 className="timer-header">
+        혈당 방어 중
+      </h1>
 
-      <button className="timer-close" aria-label="닫기" onClick={onClose}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="29"
-          viewBox="0 0 30 29"
-          fill="none"
-        >
-          <path
-            d="M22.5 7.25L7.5 21.75M7.5 7.25L22.5 21.75"
-            stroke="#624001"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
+      <h2 className="timer-title">
+        가볍게 걸어볼까요?
+      </h2>
 
-      <h2 className="timer-title">가볍게 걸어볼까요?</h2>
-
-      <p className="timer-activity-name">{recommendation.activityName}</p>
+      <p className="timer-activity-name">
+        {recommendation.activityName}
+      </p>
 
       <div className="timer-circle">
         <svg
@@ -82,8 +84,13 @@ function TimerRestore({
           preserveAspectRatio="xMidYMid meet"
         >
           <defs>
-            <path id="timer-circle-path-restore" d={timerCirclePath} pathLength="1" />
+            <path
+              id="timer-circle-path-restore"
+              d={timerCirclePath}
+              pathLength="1"
+            />
           </defs>
+
           <g className="timer-circle-paths">
             <use
               href="#timer-circle-path-restore"
@@ -92,6 +99,7 @@ function TimerRestore({
               strokeLinecap="round"
               strokeLinejoin="round"
             />
+
             <use
               className="timer-circle-progress"
               href="#timer-circle-path-restore"
@@ -99,7 +107,7 @@ function TimerRestore({
               strokeWidth="12"
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeDasharray={"1"}
+              strokeDasharray="1"
               strokeDashoffset={progress}
             />
           </g>
@@ -107,13 +115,22 @@ function TimerRestore({
       </div>
 
       <p className="timer-time">
-        {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
+        {String(minutes).padStart(2, "0")}:
+        {String(seconds).padStart(2, "0")}
       </p>
 
-      <p className="timer-remaining-label">남았어요</p>
+      <p className="timer-remaining-label">
+        남았어요
+      </p>
 
       <div className="timer-progress-track">
-        <div className="timer-progress-fill" style={{ width: `${progress * 100}%` }} />
+        <div
+          className="timer-progress-fill"
+          style={{
+            width: `${fillWidth}px`,
+            transition: "none"
+          }}
+        />
       </div>
 
       <img
@@ -122,15 +139,26 @@ function TimerRestore({
         alt="밥 캐릭터"
         style={{
           top: "583px",
-          left: `${foodLeft}px`
+          left: `${foodLeft}px`,
+          transition: "none"
         }}
       />
 
-      <img className="timer-progress-shield" src="/images/complete-shield.png" alt="방패" />
+      <img
+        className="timer-progress-shield"
+        src="/images/shield.png"
+        alt="방패"
+      />
 
-      <p className="timer-progress-text">활동 진행 중</p>
+      <p className="timer-progress-text">
+        활동 일시정지
+      </p>
 
-      <button className="timer-stop-button" onClick={onStop}>
+      <button
+        type="button"
+        className="timer-stop-button"
+        onClick={onStop}
+      >
         <svg
           className="timer-stop-icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -139,13 +167,22 @@ function TimerRestore({
           viewBox="0 0 21 21"
           fill="none"
         >
-          <path d="M0 0H21V21H0V0Z" fill="#C6C6C6" />
+          <path
+            d="M0 0H21V21H0V0Z"
+            fill="#C6C6C6"
+          />
         </svg>
 
-        <span className="timer-stop-text">그만하기</span>
+        <span className="timer-stop-text">
+          그만하기
+        </span>
       </button>
 
-      <button className="timer-pause-button" onClick={onResume}>
+      <button
+        type="button"
+        className="timer-pause-button"
+        onClick={onResume}
+      >
         <svg
           className="timer-pause-icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -154,10 +191,15 @@ function TimerRestore({
           viewBox="0 0 18 21"
           fill="none"
         >
-          <path d="M0 0L18 10.5L0 21V0Z" fill="white" />
+          <path
+            d="M0 0L18 10.5L0 21V0Z"
+            fill="white"
+          />
         </svg>
 
-        <span className="timer-pause-text">다시시작</span>
+        <span className="timer-pause-text">
+          다시 시작
+        </span>
       </button>
     </div>
   );

@@ -13,11 +13,10 @@
   font-family: Pretendard, sans-serif;
 }
 
-/* 뒤로가기 */
-
 .api-error-back {
   position: absolute;
-  left: 0.5px;
+
+  left: 12px;
   top: 53px;
 
   width: 35px;
@@ -29,6 +28,8 @@
   border: 0;
   background: transparent;
 
+  opacity: 0.7;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,31 +37,39 @@
   cursor: pointer;
 }
 
-/* 상단 제목 */
+.api-error-back svg {
+  display: block;
+
+  width: 35px;
+  height: 32px;
+}
 
 .api-error-header {
   position: absolute;
-  left: 133.5px;
-  top: 57px;
 
-  width: 136px;
-  height: 24px;
+  left: 50%;
+  top: 57px;
 
   margin: 0;
 
+  transform: translateX(-50%);
+
   color: #624001;
+
   font-family: Pretendard, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  letter-spacing: -1.2px;
-}
 
-/* 큰 안내 문구 */
+  letter-spacing: -1.2px;
+
+  white-space: nowrap;
+}
 
 .api-error-title {
   position: absolute;
+
   left: 30px;
   top: 147px;
 
@@ -70,6 +79,7 @@
   margin: 0;
 
   color: #624001;
+
   font-family: Pretendard, sans-serif;
   font-size: 26px;
   font-style: normal;
@@ -77,16 +87,16 @@
   line-height: normal;
 }
 
-/* 안내 박스 */
-
 .api-error-info {
   position: absolute;
+
   left: 30px;
   top: 233px;
 
   display: flex;
 
   width: 342px;
+
   min-width: 80px;
   min-height: 32px;
 
@@ -107,6 +117,7 @@
   margin: 0;
 
   color: #A0A0A0;
+
   font-family: Inter, sans-serif;
   font-size: 12px;
   font-style: normal;
@@ -114,10 +125,8 @@
   line-height: normal;
 }
 
-/* 다시 시도 */
-
 .api-error-retry {
- position: absolute;
+  position: absolute;
 
   left: 18px;
   top: 707px;
@@ -144,7 +153,7 @@
 
   color: #FFF;
 
-  font-family: Pretendard;
+  font-family: Pretendard, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -154,8 +163,6 @@
 
   cursor: pointer;
 }
-
-/* 홈으로 */
 
 .api-error-home {
   position: absolute;
@@ -185,7 +192,7 @@
 
   color: #C6C6C6;
 
-  font-family: Pretendard;
+  font-family: Pretendard, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
