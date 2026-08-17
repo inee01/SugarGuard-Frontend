@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
+import AfterSleepiness from "./pages/AfterSleepiness";
 import ApiError from "./pages/ApiError";
+import BeforeSleepiness from "./pages/BeforeSleepiness";
 import Complete from "./pages/Complete";
 import EnvironmentLoading from "./pages/EnvironmentLoading";
 import Home from "./pages/Home";
@@ -8,11 +10,9 @@ import LocationDenied from "./pages/LocationDenied";
 import LocationPermission from "./pages/LocationPermission";
 import NetworkError from "./pages/NetworkError";
 import Recommendation from "./pages/Recommendation";
+import SleepinessResult from "./pages/SleepinessResult";
 import Timer from "./pages/Timer";
 import TimerRestore from "./pages/TimerRestore";
-import BeforeSleepiness from "./pages/BeforeSleepiness";
-import AfterSleepiness from "./pages/AfterSleepiness";
-import SleepinessResult from "./pages/SleepinessResult";
 
 import {
   mockIndoorRecommendation,
@@ -250,7 +250,9 @@ function App() {
             String(recordId)
           );
 
-          setTimerTimeLeft(20);
+          setTimerTimeLeft(
+            recommendationData.recommendation.durationMinutes * 60
+          );
 
           setPage("timer");
         }}
