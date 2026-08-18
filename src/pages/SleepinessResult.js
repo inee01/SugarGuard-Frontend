@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./SleepinessResult.css";
 
-const API_BASE_URL = "http://1.201.116.140:8080";
+const API_BASE_URL = "";
 
 function SleepinessFace({ value }) {
   const iconColor = "#FFFFFF";
