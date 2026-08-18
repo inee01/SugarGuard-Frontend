@@ -19,7 +19,7 @@ import {
   mockOutdoorRecommendation
 } from "./data/mockRecommendation";
 
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "http://1.201.116.140:8080";
 
 function App() {
   const [page, setPage] = useState("home");
