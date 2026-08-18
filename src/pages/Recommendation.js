@@ -15,7 +15,7 @@ const PM_LABEL = {
   VERY_BAD: "매우 나쁨",
 };
 
-const API_BASE_URL = "http://192.168.45.170:8080";
+const API_BASE_URL = "http://localhost:8080";
 function toWeatherLabel(value) {
   return WEATHER_LABEL[value] ?? value;
 }

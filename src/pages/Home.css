@@ -59,11 +59,16 @@ body {
   position: static;
 }
 
+/* =========================
+   로고 / 배지
+   final: top 45px
+========================= */
+
 .home-logo {
   position: absolute;
 
   left: 18px;
-  top: clamp(18px, 3.5dvh, 32px);
+  top: clamp(18px, 5.15dvh, 45px);
 
   width: 130px;
   height: 35px;
@@ -84,8 +89,8 @@ body {
 .challenge-badge {
   position: absolute;
 
-  right: 18px;
-  top: clamp(18px, 3.5dvh, 32px);
+  right: 28px;
+  top: clamp(18px, 5.15dvh, 45px);
 
   display: flex;
 
@@ -119,11 +124,16 @@ body {
   color: #bd7b00;
 }
 
+/* =========================
+   타이틀
+   final: top 153px
+========================= */
+
 .home-title {
   position: absolute;
 
   left: 50%;
-  top: clamp(88px, 13dvh, 120px);
+  top: clamp(88px, 17.5dvh, 153px);
 
   width: 194px;
   height: 43px;
@@ -147,13 +157,18 @@ body {
   white-space: nowrap;
 }
 
+/* =========================
+   설명
+   final: top 206px
+========================= */
+
 .home-description {
   position: absolute;
 
   left: 50%;
-  top: clamp(140px, 20dvh, 175px);
+  top: clamp(140px, 23.57dvh, 206px);
 
-  width: 150px;
+  width: 111px;
 
   margin: 0;
 
@@ -167,19 +182,24 @@ body {
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 1.35;
+  line-height: normal;
 
   letter-spacing: -0.96px;
 }
+
+/* =========================
+   음식 배경
+   final: 259px / top 287px
+========================= */
 
 .meal-gradient {
   position: absolute;
 
   left: 50%;
-  top: clamp(190px, 27dvh, 230px);
+  top: clamp(190px, 32.84dvh, 287px);
 
-  width: min(250px, 64vw);
-  height: min(250px, 64vw);
+  width: min(259px, 66vw);
+  height: min(259px, 66vw);
 
   transform: translateX(-50%);
 
@@ -194,13 +214,18 @@ body {
   filter: blur(16.5px);
 }
 
+/* =========================
+   음식 이미지
+   final: 327x184 / top 320px
+========================= */
+
 .meal-image {
   position: absolute;
 
   left: 50%;
-  top: clamp(218px, 30dvh, 260px);
+  top: clamp(218px, 36.61dvh, 320px);
 
-  width: min(310px, 78vw);
+  width: min(327px, 82vw);
   height: auto;
 
   transform: translateX(-50%);
@@ -210,16 +235,25 @@ body {
   aspect-ratio: 327 / 184;
 }
 
+/* =========================
+   시작 버튼
+   final:
+   top 674px
+   height 65px
+   → bottom 135px
+========================= */
+
 .start-button {
   position: absolute;
 
   left: 18px;
-  bottom: 128px;
+  bottom: clamp(122px, 15.45dvh, 135px);
 
   display: flex;
 
   width: calc(100% - 36px);
-  height: 62px;
+  max-width: 366px;
+  height: 65px;
 
   padding: 10px;
 
@@ -249,14 +283,23 @@ body {
   cursor: pointer;
 }
 
+/* =========================
+   오늘의 도전
+   final:
+   top 752px
+   height 95px
+   → bottom 27px
+========================= */
+
 .daily-card {
   position: absolute;
 
   left: 18px;
-  bottom: 20px;
+  bottom: clamp(18px, 3.09dvh, 27px);
 
   width: calc(100% - 36px);
-  height: 94px;
+  max-width: 366px;
+  height: 95px;
 
   border-radius: 15px;
 
@@ -267,7 +310,7 @@ body {
   position: absolute;
 
   left: 16px;
-  top: 15px;
+  top: 17px;
 
   margin: 0;
 
@@ -286,7 +329,7 @@ body {
   position: absolute;
 
   left: 12px;
-  bottom: 16px;
+  top: 51px;
 
   width: calc(100% - 24px);
   height: 27px;
@@ -316,6 +359,10 @@ body {
   width: 100%;
 }
 
+/* =========================
+   낮은 화면
+========================= */
+
 @media (max-height: 700px) {
   .home-logo,
   .challenge-badge {
@@ -324,6 +371,7 @@ body {
 
   .home-title {
     top: 75px;
+
     font-size: 32px;
   }
 
@@ -340,19 +388,34 @@ body {
 
   .meal-image {
     top: 192px;
+
     width: min(270px, 72vw);
   }
 
   .start-button {
     bottom: 122px;
+
     height: 58px;
   }
 
   .daily-card {
     bottom: 18px;
+
     height: 91px;
   }
+
+  .daily-text {
+    top: 15px;
+  }
+
+  .progress-track {
+    top: 49px;
+  }
 }
+
+/* =========================
+   좁은 화면
+========================= */
 
 @media (max-width: 360px) {
   .home-logo {
@@ -372,6 +435,7 @@ body {
   .start-button,
   .daily-card {
     left: 14px;
+
     width: calc(100% - 28px);
   }
 }

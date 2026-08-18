@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Sleepiness.css";
 
-const API_BASE_URL = "http://192.168.45.170:8080";
+const API_BASE_URL = "http://localhost:8080";
 
 const sleepinessOptions = [
   { value: 1, label: "개운해요", icon: "fresh" },
