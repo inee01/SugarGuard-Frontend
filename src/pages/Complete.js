@@ -7,7 +7,7 @@ function Complete({
   recommendation,
   distanceKm,
   homeData,
-  onHome
+  onNext
 }) {
   const formatDistance = (km) => {
     if (km < 0.01) {
@@ -91,7 +91,7 @@ function Complete({
       <button
         type="button"
         className="complete-button"
-        onClick={onHome}
+        onClick={onNext}
       >
         완료
       </button>

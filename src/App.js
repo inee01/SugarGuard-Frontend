@@ -297,6 +297,22 @@ function App() {
         }
         onComplete={(result) => {
           setSleepinessResult(result);
+          setPage("complete");
+        }}
+      />
+    );
+  }
+
+  if (page === "complete") {
+    return (
+      <Complete
+        recommendation={
+          recommendationData?.recommendation ??
+          mockOutdoorRecommendation.recommendation
+        }
+        distanceKm={distanceKm}
+        homeData={homeData}
+        onHome={() => {
           setPage("sleepinessResult");
         }}
       />
@@ -318,21 +334,7 @@ function App() {
         activityType={
           recommendationData.recommendation.activityType
         }
-        onComplete={() => setPage("complete")}
-      />
-    );
-  }
-
-  if (page === "complete") {
-    return (
-      <Complete
-        recommendation={
-          recommendationData?.recommendation ??
-          mockOutdoorRecommendation.recommendation
-        }
-        distanceKm={distanceKm}
-        homeData={homeData}
-        onHome={() => {
+        onComplete={() => {
           localStorage.removeItem("sleepinessRecordId");
           setSleepinessRecordId(null);
           setSleepinessResult(null);
