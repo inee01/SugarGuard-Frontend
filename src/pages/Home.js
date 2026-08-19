@@ -4,12 +4,14 @@ function Home({ onStart, homeData }) {
   const isCompletedToday = homeData?.isCompletedToday ?? false;
   const continuousDays = homeData?.continuousDays ?? 0;
 
-  // 버튼을 뗀 뒤 원위치로 돌아오는 애니메이션을 보여주고
-  // 다음 화면으로 이동
   const handleStart = () => {
-    setTimeout(() => {
-      onStart();
-    }, 80);
+    onStart();
+  };
+
+  const handleKeyUp = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleStart();
+    }
   };
 
   return (
@@ -52,8 +54,10 @@ function Home({ onStart, homeData }) {
         </div>
 
         <button
+          type="button"
           className="start-button"
-          onClick={handleStart}
+          onPointerUp={handleStart}
+          onKeyUp={handleKeyUp}
         >
           밥 먹었어요!
         </button>
