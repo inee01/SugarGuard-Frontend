@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+# SugarGuard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 식후 15분, 당신의 컨디션을 지켜드립니다.
 
-## Available Scripts
+SugarGuard는 식사 후 사용자의 위치, 시간대, 날씨 등의 환경 정보를 바탕으로
+AI가 현재 상황에 적합한 15분 활동을 추천하고 실행까지 연결하는 서비스입니다.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 주요 기능
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 위치·시간대·날씨 기반 환경 정보 인식
+- AI 기반 맞춤 활동 추천
+- 스쿼트 / 걷기 등 15분 활동 제공
+- 15분 활동 타이머
+- GPS 기반 걷기 거리 측정
+- 활동 전·후 졸림 정도 기록 및 비교
+- 활동 기록을 활용한 개인화 추천
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 서비스 흐름
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. SugarGuard 접속
+2. `밥 먹었어요!` 버튼 선택
+3. 사용자 위치 및 환경 정보 인식
+4. 현재 상황에 맞는 활동 추천
+5. 활동 전 졸림 정도 기록
+6. 추천받은 15분 활동 진행
+7. 활동 완료
+8. 활동 후 졸림 정도 기록
+9. 활동 전·후 결과 확인
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Frontend Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React
+- JavaScript
+- CSS
+- Geolocation API
+- REST API
+- Git / GitHub
+- Vercel
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 프로젝트 실행 방법
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 1. Repository Clone
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+터미널에서 아래 명령어를 실행합니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/inee01/SugarGuard-Frontend.git
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. 프로젝트 폴더로 이동
 
-## Learn More
+```bash
+cd SugarGuard-Frontend
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 3. 패키지 설치
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm install
+```
 
-### Code Splitting
+### 4. 개발 서버 실행
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm start
+```
 
-### Analyzing the Bundle Size
+실행 후 브라우저에서 아래 주소로 접속합니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```text
+http://localhost:3000
+```
 
-### Making a Progressive Web App
+### 5. 프로덕션 빌드
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+배포용 빌드가 필요한 경우 아래 명령어를 실행합니다.
 
-### Advanced Configuration
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+빌드가 완료되면 `build` 폴더가 생성됩니다.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 배포
 
-### `npm run build` fails to minify
+Frontend는 Vercel을 통해 배포되어 있습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://sugar-guard-frontend.vercel.app
+
+---
+
+## 사용 시 참고사항
+
+- 위치 기반 기능을 사용하기 위해 브라우저의 위치 권한 허용이 필요합니다.
+- GPS 정확도와 사용 환경에 따라 측정되는 이동 거리에 차이가 발생할 수 있습니다.
+- 모바일 환경에서 위치 기반 활동을 테스트할 때는 위치 서비스가 활성화되어 있어야 합니다.
+
+---
+
+## SugarGuard가 해결하고자 하는 것
+
+SugarGuard는 단순히 활동을 추천하는 데 그치지 않고,
+
+**추천 → 실행 → 결과 측정 → 개인화**
+
+로 이어지는 구조를 통해 사용자가 식후 15분의 건강한 행동을 일상적인 습관으로 만드는 것을 목표로 합니다.
