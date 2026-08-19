@@ -1,17 +1,18 @@
+import { useState } from "react";
 import "./Home.css";
 
 function Home({ onStart, homeData }) {
   const isCompletedToday = homeData?.isCompletedToday ?? false;
   const continuousDays = homeData?.continuousDays ?? 0;
 
-  const handleStart = () => {
-    onStart();
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handlePointerDown = () => {
+    setIsPressed(true);
   };
 
-  const handleKeyUp = (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      handleStart();
-    }
+  const handlePointerUp = () => {
+    onStart();
   };
 
   return (
@@ -55,9 +56,12 @@ function Home({ onStart, homeData }) {
 
         <button
           type="button"
-          className="start-button"
-          onPointerUp={handleStart}
-          onKeyUp={handleKeyUp}
+          className={`start-button ${
+            isPressed ? "pressed" : ""
+          }`}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={() => setIsPressed(false)}
         >
           밥 먹었어요!
         </button>
