@@ -1,441 +1,452 @@
 @import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  margin: 0;
-  width: 100%;
-  min-height: 100%;
-}
-
-html,
-body {
-  overflow: hidden;
-}
-
-body {
-  background: #f5f5f5;
-  font-family: Pretendard, sans-serif;
-}
-
-#root {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-
-  width: 100%;
-  min-height: 100dvh;
-
-  overflow: hidden;
-}
-
-.home-page {
-  position: relative;
-
-  width: 100%;
-  max-width: 402px;
-
-  height: min(100dvh, 874px);
-
-  margin: 0 auto;
-
-  background: #fff;
-
-  box-shadow:
-    0 -149px 63.2px -2px rgba(0, 0, 0, 0.04) inset;
-
-  overflow: hidden;
-}
-
-.home-header,
-.home-main,
-.home-intro,
-.meal-visual {
-  position: static;
-}
-
-/* =========================
-   로고 / 배지
-   final: top 45px
-========================= */
-
-.home-logo {
-  position: absolute;
-
-  left: 18px;
-  top: clamp(18px, 5.15dvh, 45px);
-
-  width: 130px;
-  height: 35px;
-
-  margin: 0;
-
-  color: #ffa600;
-
-  font-family: "Fugaz One", sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-
-  letter-spacing: -1.44px;
-}
-
-.challenge-badge {
-  position: absolute;
-
-  right: 28px;
-  top: clamp(18px, 5.15dvh, 45px);
-
-  display: flex;
-
-  width: 85px;
-  height: 35px;
-
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 43px;
-
-  background: rgba(255, 224, 168, 0.6);
-}
-
-.challenge-emoji,
-.challenge-text {
-  font-family: Pretendard, sans-serif;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-
-  letter-spacing: -0.78px;
-}
-
-.challenge-emoji {
-  color: #000;
-}
-
-.challenge-text {
-  color: #bd7b00;
-}
-
-/* =========================
-   타이틀
-   final: top 153px
-========================= */
-
-.home-title {
-  position: absolute;
-
-  left: 50%;
-  top: clamp(88px, 17.5dvh, 153px);
-
-  width: 194px;
-  height: 43px;
-
-  margin: 0;
-
-  transform: translateX(-50%);
-
-  color: #624001;
-
-  text-align: center;
-
-  font-family: Pretendard, sans-serif;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-
-  letter-spacing: -2.16px;
-
-  white-space: nowrap;
-}
-
-/* =========================
-   설명
-   final: top 206px
-========================= */
-
-.home-description {
-  position: absolute;
-
-  left: 50%;
-  top: clamp(140px, 23.57dvh, 206px);
-
-  width: 111px;
-
-  margin: 0;
-
-  transform: translateX(-50%);
-
-  color: rgba(120, 78, 0, 0.6);
-
-  text-align: center;
-
-  font-family: Pretendard, sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
-  letter-spacing: -0.96px;
-}
-
-/* =========================
-   음식 배경
-   final: 259px / top 287px
-========================= */
-
-.meal-gradient {
-  position: absolute;
-
-  left: 50%;
-  top: clamp(190px, 32.84dvh, 287px);
-
-  width: min(259px, 66vw);
-  height: min(259px, 66vw);
-
-  transform: translateX(-50%);
-
-  border-radius: 50%;
-
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #ffa600 0%,
-    #fff7e7 100%
-  );
-
-  filter: blur(16.5px);
-}
-
-/* =========================
-   음식 이미지
-   final: 327x184 / top 320px
-========================= */
-
-.meal-image {
-  position: absolute;
-
-  left: 50%;
-  top: clamp(218px, 36.61dvh, 320px);
-
-  width: min(327px, 82vw);
-  height: auto;
-
-  transform: translateX(-50%);
-
-  object-fit: contain;
-
-  aspect-ratio: 327 / 184;
-}
-
-/* =========================
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"); 
+ 
+* { 
+  box-sizing: border-box; 
+} 
+ 
+html, 
+body, 
+#root { 
+  margin: 0; 
+  width: 100%; 
+  min-height: 100%; 
+} 
+ 
+html, 
+body { 
+  overflow: hidden; 
+} 
+ 
+body { 
+  background: #f5f5f5; 
+  font-family: Pretendard, sans-serif; 
+} 
+ 
+#root { 
+  display: flex; 
+  justify-content: center; 
+  align-items: flex-start; 
+ 
+  width: 100%; 
+  min-height: 100dvh; 
+ 
+  overflow: hidden; 
+} 
+ 
+.home-page { 
+  position: relative; 
+ 
+  width: 100%; 
+  max-width: 402px; 
+ 
+  height: min(100dvh, 874px); 
+ 
+  margin: 0 auto; 
+ 
+  background: #fff; 
+ 
+  box-shadow: 
+    0 -149px 63.2px -2px rgba(0, 0, 0, 0.04) inset; 
+ 
+  overflow: hidden; 
+} 
+ 
+.home-header, 
+.home-main, 
+.home-intro, 
+.meal-visual { 
+  position: static; 
+} 
+ 
+/* ========================= 
+   로고 / 배지 
+========================= */ 
+ 
+.home-logo { 
+  position: absolute; 
+ 
+  left: 18px; 
+  top: clamp(18px, 5.15dvh, 45px); 
+ 
+  width: 130px; 
+  height: 35px; 
+ 
+  margin: 0; 
+ 
+  color: #ffa600; 
+ 
+  font-family: "Fugaz One", sans-serif; 
+  font-size: 24px; 
+  font-style: normal; 
+  font-weight: 400; 
+  line-height: normal; 
+ 
+  letter-spacing: -1.44px; 
+} 
+ 
+.challenge-badge { 
+  position: absolute; 
+ 
+  right: 28px; 
+  top: clamp(18px, 5.15dvh, 45px); 
+ 
+  display: flex; 
+ 
+  width: 85px; 
+  height: 35px; 
+ 
+  justify-content: center; 
+  align-items: center; 
+ 
+  border-radius: 43px; 
+ 
+  background: rgba(255, 224, 168, 0.6); 
+} 
+ 
+.challenge-emoji, 
+.challenge-text { 
+  font-family: Pretendard, sans-serif; 
+  font-size: 13px; 
+  font-style: normal; 
+  font-weight: 700; 
+  line-height: normal; 
+ 
+  letter-spacing: -0.78px; 
+} 
+ 
+.challenge-emoji { 
+  color: #000; 
+} 
+ 
+.challenge-text { 
+  color: #bd7b00; 
+} 
+ 
+/* ========================= 
+   타이틀 
+========================= */ 
+ 
+.home-title { 
+  position: absolute; 
+ 
+  left: 50%; 
+  top: clamp(88px, 17.5dvh, 153px); 
+ 
+  width: 194px; 
+  height: 43px; 
+ 
+  margin: 0; 
+ 
+  transform: translateX(-50%); 
+ 
+  color: #624001; 
+ 
+  text-align: center; 
+ 
+  font-family: Pretendard, sans-serif; 
+  font-size: 36px; 
+  font-style: normal; 
+  font-weight: 700; 
+  line-height: normal; 
+ 
+  letter-spacing: -2.16px; 
+ 
+  white-space: nowrap; 
+} 
+ 
+/* ========================= 
+   설명 
+========================= */ 
+ 
+.home-description { 
+  position: absolute; 
+ 
+  left: 50%; 
+  top: clamp(140px, 23.57dvh, 206px); 
+ 
+  width: 111px; 
+ 
+  margin: 0; 
+ 
+  transform: translateX(-50%); 
+ 
+  color: rgba(120, 78, 0, 0.6); 
+ 
+  text-align: center; 
+ 
+  font-family: Pretendard, sans-serif; 
+  font-size: 16px; 
+  font-style: normal; 
+  font-weight: 500; 
+  line-height: normal; 
+ 
+  letter-spacing: -0.96px; 
+} 
+ 
+/* ========================= 
+   음식 배경 
+========================= */ 
+ 
+.meal-gradient { 
+  position: absolute; 
+ 
+  left: 50%; 
+  top: clamp(190px, 32.84dvh, 287px); 
+ 
+  width: min(259px, 66vw); 
+  height: min(259px, 66vw); 
+ 
+  transform: translateX(-50%); 
+ 
+  border-radius: 50%; 
+ 
+  background: radial-gradient( 
+    50% 50% at 50% 50%, 
+    #ffa600 0%, 
+    #fff7e7 100% 
+  ); 
+ 
+  filter: blur(16.5px); 
+} 
+ 
+/* ========================= 
+   음식 이미지 
+========================= */ 
+ 
+.meal-image { 
+  position: absolute; 
+ 
+  left: 50%; 
+  top: clamp(218px, 36.61dvh, 320px); 
+ 
+  width: min(327px, 82vw); 
+  height: auto; 
+ 
+  transform: translateX(-50%); 
+ 
+  object-fit: contain; 
+ 
+  aspect-ratio: 327 / 184; 
+} 
+ 
+/* ========================= 
    시작 버튼
-   final:
-   top 674px
-   height 65px
-   → bottom 135px
-========================= */
+   눌리는 효과 추가
+========================= */ 
+ 
+.start-button { 
+  position: absolute; 
+ 
+  left: 18px; 
+  bottom: clamp(122px, 15.45dvh, 135px); 
+ 
+  display: flex; 
+ 
+  width: calc(100% - 36px); 
+  max-width: 366px; 
+  height: 65px; 
+ 
+  padding: 10px; 
+ 
+  justify-content: center; 
+  align-items: center; 
+ 
+  gap: 10px; 
+ 
+  border: none; 
+  border-radius: 15px; 
+ 
+  background: #ffad16; 
+ 
+  box-shadow: 
+    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset,
+    0 5px 0 #d98d00;
+ 
+  color: #fff; 
+ 
+  font-family: Pretendard, sans-serif; 
+  font-size: 24px; 
+  font-style: normal; 
+  font-weight: 700; 
+  line-height: normal; 
+ 
+  letter-spacing: -1.44px; 
+ 
+  cursor: pointer;
 
-.start-button {
-  position: absolute;
+  transform: translateY(0);
 
-  left: 18px;
-  bottom: clamp(122px, 15.45dvh, 135px);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    background-color 0.08s ease;
 
-  display: flex;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-action: manipulation;
+}
 
-  width: calc(100% - 36px);
-  max-width: 366px;
-  height: 65px;
-
-  padding: 10px;
-
-  justify-content: center;
-  align-items: center;
-
-  gap: 10px;
-
-  border: none;
-  border-radius: 15px;
-
-  background: #ffad16;
+/* 버튼을 누르고 있는 순간 */
+.start-button:active {
+  transform: translateY(4px);
 
   box-shadow:
-    -2px -4px 0 0 rgba(0, 0, 0, 0.25) inset;
+    -1px -2px 0 0 rgba(0, 0, 0, 0.18) inset,
+    0 1px 0 #d98d00;
 
-  color: #fff;
-
-  font-family: Pretendard, sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-
-  letter-spacing: -1.44px;
-
-  cursor: pointer;
+  background: #ffa90d;
 }
-
-/* =========================
-   오늘의 도전
-   final:
-   top 752px
-   height 95px
-   → bottom 27px
-========================= */
-
-.daily-card {
-  position: absolute;
-
-  left: 18px;
-  bottom: clamp(18px, 3.09dvh, 27px);
-
-  width: calc(100% - 36px);
-  max-width: 366px;
-  height: 95px;
-
-  border-radius: 15px;
-
-  background: #ffefd3;
-}
-
-.daily-text {
-  position: absolute;
-
-  left: 16px;
-  top: 17px;
-
-  margin: 0;
-
-  color: #bd7b00;
-
-  font-family: Pretendard, sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
-  letter-spacing: -0.96px;
-}
-
-.progress-track {
-  position: absolute;
-
-  left: 12px;
-  top: 51px;
-
-  width: calc(100% - 24px);
-  height: 27px;
-
-  border-radius: 44px;
-
-  background: #ffe0a8;
-
-  overflow: hidden;
-}
-
-.progress-marker {
-  position: absolute;
-
-  left: 0;
-  top: -5px;
-
-  width: 24px;
-  height: 37px;
-
-  background: rgba(189, 123, 0, 0.6);
-
-  transition: width 0.4s ease;
-}
-
-.progress-marker.progress-complete {
-  width: 100%;
-}
-
-/* =========================
-   낮은 화면
-========================= */
-
-@media (max-height: 700px) {
-  .home-logo,
-  .challenge-badge {
-    top: 14px;
-  }
-
-  .home-title {
-    top: 75px;
-
-    font-size: 32px;
-  }
-
-  .home-description {
-    top: 122px;
-  }
-
-  .meal-gradient {
-    top: 170px;
-
-    width: 215px;
-    height: 215px;
-  }
-
-  .meal-image {
-    top: 192px;
-
-    width: min(270px, 72vw);
-  }
-
-  .start-button {
-    bottom: 122px;
-
-    height: 58px;
-  }
-
-  .daily-card {
-    bottom: 18px;
-
-    height: 91px;
-  }
-
-  .daily-text {
-    top: 15px;
-  }
-
-  .progress-track {
-    top: 49px;
-  }
-}
-
-/* =========================
-   좁은 화면
-========================= */
-
-@media (max-width: 360px) {
-  .home-logo {
-    left: 14px;
-
-    font-size: 22px;
-  }
-
-  .challenge-badge {
-    right: 14px;
-  }
-
-  .home-title {
-    font-size: 32px;
-  }
-
-  .start-button,
-  .daily-card {
-    left: 14px;
-
-    width: calc(100% - 28px);
-  }
+ 
+/* ========================= 
+   오늘의 도전 
+========================= */ 
+ 
+.daily-card { 
+  position: absolute; 
+ 
+  left: 18px; 
+  bottom: clamp(18px, 3.09dvh, 27px); 
+ 
+  width: calc(100% - 36px); 
+  max-width: 366px; 
+  height: 95px; 
+ 
+  border-radius: 15px; 
+ 
+  background: #ffefd3; 
+} 
+ 
+.daily-text { 
+  position: absolute; 
+ 
+  left: 16px; 
+  top: 17px; 
+ 
+  margin: 0; 
+ 
+  color: #bd7b00; 
+ 
+  font-family: Pretendard, sans-serif; 
+  font-size: 16px; 
+  font-style: normal; 
+  font-weight: 500; 
+  line-height: normal; 
+ 
+  letter-spacing: -0.96px; 
+} 
+ 
+.progress-track { 
+  position: absolute; 
+ 
+  left: 12px; 
+  top: 51px; 
+ 
+  width: calc(100% - 24px); 
+  height: 27px; 
+ 
+  border-radius: 44px; 
+ 
+  background: #ffe0a8; 
+ 
+  overflow: hidden; 
+} 
+ 
+.progress-marker { 
+  position: absolute; 
+ 
+  left: 0; 
+  top: -5px; 
+ 
+  width: 24px; 
+  height: 37px; 
+ 
+  background: rgba(189, 123, 0, 0.6); 
+ 
+  transition: width 0.4s ease; 
+} 
+ 
+.progress-marker.progress-complete { 
+  width: 100%; 
+} 
+ 
+/* ========================= 
+   낮은 화면 
+========================= */ 
+ 
+@media (max-height: 700px) { 
+  .home-logo, 
+  .challenge-badge { 
+    top: 14px; 
+  } 
+ 
+  .home-title { 
+    top: 75px; 
+ 
+    font-size: 32px; 
+  } 
+ 
+  .home-description { 
+    top: 122px; 
+  } 
+ 
+  .meal-gradient { 
+    top: 170px; 
+ 
+    width: 215px; 
+    height: 215px; 
+  } 
+ 
+  .meal-image { 
+    top: 192px; 
+ 
+    width: min(270px, 72vw); 
+  } 
+ 
+  .start-button { 
+    bottom: 122px; 
+ 
+    height: 58px; 
+  } 
+ 
+  .daily-card { 
+    bottom: 18px; 
+ 
+    height: 91px; 
+  } 
+ 
+  .daily-text { 
+    top: 15px; 
+  } 
+ 
+  .progress-track { 
+    top: 49px; 
+  } 
+} 
+ 
+/* ========================= 
+   좁은 화면 
+========================= */ 
+ 
+@media (max-width: 360px) { 
+  .home-logo { 
+    left: 14px; 
+ 
+    font-size: 22px; 
+  } 
+ 
+  .challenge-badge { 
+    right: 14px; 
+  } 
+ 
+  .home-title { 
+    font-size: 32px; 
+  } 
+ 
+  .start-button, 
+  .daily-card { 
+    left: 14px; 
+ 
+    width: calc(100% - 28px); 
+  } 
 }

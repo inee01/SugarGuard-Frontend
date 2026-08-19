@@ -4,6 +4,14 @@ function Home({ onStart, homeData }) {
   const isCompletedToday = homeData?.isCompletedToday ?? false;
   const continuousDays = homeData?.continuousDays ?? 0;
 
+  // 버튼을 뗀 뒤 원위치로 돌아오는 애니메이션을 보여주고
+  // 다음 화면으로 이동
+  const handleStart = () => {
+    setTimeout(() => {
+      onStart();
+    }, 80);
+  };
+
   return (
     <div className="home-page">
       <header className="home-header">
@@ -45,7 +53,7 @@ function Home({ onStart, homeData }) {
 
         <button
           className="start-button"
-          onClick={onStart}
+          onClick={handleStart}
         >
           밥 먹었어요!
         </button>
