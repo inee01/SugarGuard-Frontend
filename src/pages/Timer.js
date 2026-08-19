@@ -100,7 +100,7 @@ function Timer({
         accuracy
       } = position.coords;
 
-      if (accuracy > 150) {
+      if (accuracy > 300) {
         console.warn(
           `GPS 정확도가 낮아 위치를 무시합니다: ${Math.round(
             accuracy
