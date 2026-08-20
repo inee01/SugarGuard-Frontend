@@ -312,7 +312,7 @@ function App() {
         }
         distanceKm={distanceKm}
         homeData={homeData}
-        onHome={() => {
+        onNext={() => {
           setPage("sleepinessResult");
         }}
       />
